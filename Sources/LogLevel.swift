@@ -7,6 +7,9 @@
 //
 
 extension Linna {
+    /**
+     Default log levels.
+     */
     enum LogLevel: String, Codable {
         case info, warning, error
         
