@@ -71,6 +71,7 @@ fastlane/screenshots/**/*.png
 fastlane/test_output
 
 # bundle
+.vscode
 .bundle
 vendor/
 .scannerwork/

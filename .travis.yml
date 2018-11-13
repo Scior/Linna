@@ -10,9 +10,7 @@ before_script:
   - bundle exec danger
 
 script:
-  - swift --version
-  - swift package update
-  - swift test
+  - fastlane coverage
 
 branches:
   only:
