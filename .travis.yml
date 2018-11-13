@@ -1,14 +1,18 @@
 language: objective-c
-osx_image: xcode10
+osx_image: xcode10.1
 dist: trusty
 
 cache:
   directories:
   - vendor/bundle
-  - Pods
 
 before_script:
   - bundle exec danger
+
+script:
+  - swift --version
+  - swift package update
+  - swift test
 
 branches:
   only:
