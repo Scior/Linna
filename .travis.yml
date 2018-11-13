@@ -1,0 +1,15 @@
+language: objective-c
+osx_image: xcode10
+dist: trusty
+
+cache:
+  directories:
+  - vendor/bundle
+  - Pods
+
+before_script:
+  - bundle exec danger
+
+branches:
+  only:
+  - master
