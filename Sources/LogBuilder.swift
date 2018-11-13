@@ -11,7 +11,7 @@
  */
 final class LogBuilder {
     
-    // - MARK: Properties
+    // MARK: - Properties
     
     private static let dateFormatter: DateFormatter = {
         var formatter = DateFormatter()
@@ -22,13 +22,13 @@ final class LogBuilder {
         return formatter
     }()
     
-    // - MARK: Lifecycle
+    // MARK: - Lifecycle
     
     private init() {
         // Singleton
     }
     
-    // - MARK: Methods
+    // MARK: - Methods
     
     /**
      Concatenates the information for the log and returns the result `String`.

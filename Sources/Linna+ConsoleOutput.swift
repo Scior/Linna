@@ -6,6 +6,9 @@
 //  Copyright © 2018 Suita Fujino. All rights reserved.
 //
 
+/**
+ The extension for console output.
+ */
 extension Linna {
     /**
      Outputs a log to the console.
