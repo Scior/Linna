@@ -9,12 +9,16 @@
 
 ----
 
+## What's this?
+
+Linna is a simple customizable logger for iOS, fully compatible with Swift.
+
 ## Installation
 
 ### With Carthage
 
 * Add the following line to `Cartfile`
 
-```sh
+```ruby
 github "Scior/Linna"
 ```
