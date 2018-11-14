@@ -16,9 +16,11 @@ class LogBuilderTests: XCTestCase {
     private let testFileName = "HogeFile"
     private let testFunction = "HogeFunction"
     private let testLine: Int = 1_212
+    
+    private let logBuilder = LogBuilder()
 
     func testBuild() {
-        let actual = LogBuilder.build(
+        let actual = logBuilder.build(
             objects: testObjects,
             level: .info,
             tags: testTags,

@@ -13,4 +13,13 @@ import Foundation
  */
 final class Linna {
     
+    // MARK: - Properties
+    
+    static let logBuilder = LogBuilder()
+    
+    // MARK: - Lifecycle
+    
+    private init() {
+        // Singleton
+    }
 }

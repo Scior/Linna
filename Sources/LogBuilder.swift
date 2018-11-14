@@ -13,19 +13,20 @@ final class LogBuilder {
     
     // MARK: - Properties
     
-    private static let dateFormatter: DateFormatter = {
-        var formatter = DateFormatter()
-        formatter.dateStyle = .medium
-        formatter.timeStyle = .medium
-        formatter.locale = Locale(identifier: "ja_JP")
-        
-        return formatter
-    }()
+    private let dateFormatter: DateFormatter
     
     // MARK: - Lifecycle
     
-    private init() {
-        // Singleton
+    // TODO: Remove a default argument
+    init(formatter: DateFormatter? = nil) {
+        if let formatter = formatter {
+            dateFormatter = formatter
+        } else {
+            dateFormatter = DateFormatter()
+            dateFormatter.dateStyle = .medium
+            dateFormatter.timeStyle = .medium
+            dateFormatter.locale = Locale(identifier: "ja_JP")
+        }
     }
     
     // MARK: - Methods
@@ -37,7 +38,7 @@ final class LogBuilder {
        - objects: Main contents for logging.
        - caller: A caller of logger.
      */
-    static func build(objects: [Any], level: Linna.LogLevel, tags: [String] = [], caller: Caller) -> String {
+    func build(objects: [Any], level: Linna.LogLevel, tags: [String] = [], caller: Caller) -> String {
         let dateTime = dateFormatter.string(from: Date())
         
         return DefaultLogFormatter().format(from: LogContents(date: dateTime, level: level, objects: objects, caller: caller))

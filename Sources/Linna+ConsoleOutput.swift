@@ -21,7 +21,7 @@ extension Linna {
      */
     static func cout(_ objects: Any..., fileName: String = #file, functionName: String = #function, lineNumber: Int = #line) {
         let logLevel = LogLevel.info.outputName()
-        let output = LogBuilder.build(
+        let output = logBuilder.build(
             objects: objects,
             level: .info,
             tags: [logLevel],
