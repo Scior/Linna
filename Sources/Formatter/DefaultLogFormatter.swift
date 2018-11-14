@@ -12,7 +12,7 @@
 class DefaultLogFormatter: LogFormatter {
     private static let pattern = "%d [%level] [%file.%func:%line] %obj"
     
-    func format(from contents: LogContents) -> String {
+    func format(from contents: LogContents) -> String? {
         return format(from: contents, with: DefaultLogFormatter.pattern)
     }
 }

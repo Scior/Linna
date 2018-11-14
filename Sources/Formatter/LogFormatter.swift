@@ -18,7 +18,7 @@ protocol LogFormatter {
      
      - Returns: `String` The formatted log.
      */
-    func format(from contents: LogContents) -> String
+    func format(from contents: LogContents) -> String?
 }
 
 extension LogFormatter {
@@ -27,6 +27,7 @@ extension LogFormatter {
      
      - `%d`: Replaced with a date string.
      - `%obj`: Replaced with objects.
+     - `%level`: Replaced with a log level.
      - `%file`: Replaced with a file name.
      - `%func`: Replaced with a function name.
      - `%line`: Replaced with a line number.
@@ -37,8 +38,9 @@ extension LogFormatter {
      
      - Returns: `String` The formatted log.
      */
-    func format(from contents: LogContents, with pattern: String) -> String {
+    func format(from contents: LogContents, with pattern: String) -> String? {
         return pattern
+            .checkPatternRules()?
             .replaceSafely(of: "%d", with: contents.date)
             .replaceSafely(of: "%obj", with: contents.objects.map({ "\($0)" }).joined(separator: " "))
             .replaceSafely(of: "%level", with: contents.level.outputName())
@@ -50,6 +52,10 @@ extension LogFormatter {
 }
 
 fileprivate extension String {
+    func checkPatternRules() -> String? {
+        return self.contains("%%") ? nil : self
+    }
+    
     func replaceSafely(of target: String, with replacement: String) -> String {
         return self.replacingOccurrences(of: target, with: "%%" + replacement)
     }
