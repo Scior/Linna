@@ -23,6 +23,7 @@ extension Linna {
         let logLevel = LogLevel.info.outputName()
         let output = LogBuilder.build(
             objects: objects,
+            level: .info,
             tags: [logLevel],
             caller: Caller(fileName: fileName, functionName: functionName, lineNumber: lineNumber)
         )

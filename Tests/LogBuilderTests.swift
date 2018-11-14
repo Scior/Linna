@@ -20,6 +20,7 @@ class LogBuilderTests: XCTestCase {
     func testBuild() {
         let actual = LogBuilder.build(
             objects: testObjects,
+            level: .info,
             tags: testTags,
             caller: Caller(
                 fileName: testFileName,
@@ -27,7 +28,7 @@ class LogBuilderTests: XCTestCase {
                 lineNumber: testLine)
         )
         
-        let expected = "[\(testTags[0])] [\(testFunction):\(testLine)] \(testObjects[0])"
+        let expected = "[INFO] [\(testFileName).\(testFunction):\(testLine)] \(testObjects[0])"
         
         XCTAssert(actual.contains(expected))
     }

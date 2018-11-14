@@ -17,6 +17,9 @@
 		6B3743762199B36C001493A1 /* LogBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B3743752199B36C001493A1 /* LogBuilder.swift */; };
 		6B374378219B2767001493A1 /* LogBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B374377219B2767001493A1 /* LogBuilderTests.swift */; };
 		6B37437B219C0D1F001493A1 /* Caller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37437A219C0D1F001493A1 /* Caller.swift */; };
+		6B37437F219C194F001493A1 /* LogFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37437E219C194F001493A1 /* LogFormatter.swift */; };
+		6B374381219C19A4001493A1 /* LogContents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B374380219C19A4001493A1 /* LogContents.swift */; };
+		6B374383219C1E63001493A1 /* DefaultLogFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B374382219C1E63001493A1 /* DefaultLogFormatter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +46,9 @@
 		6B3743752199B36C001493A1 /* LogBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogBuilder.swift; sourceTree = "<group>"; };
 		6B374377219B2767001493A1 /* LogBuilderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogBuilderTests.swift; sourceTree = "<group>"; };
 		6B37437A219C0D1F001493A1 /* Caller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Caller.swift; sourceTree = "<group>"; };
+		6B37437E219C194F001493A1 /* LogFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogFormatter.swift; sourceTree = "<group>"; };
+		6B374380219C19A4001493A1 /* LogContents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogContents.swift; sourceTree = "<group>"; };
+		6B374382219C1E63001493A1 /* DefaultLogFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultLogFormatter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +91,7 @@
 		6B3743452199AAE1001493A1 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				6B37437D219C1939001493A1 /* Formatter */,
 				6B374379219C0CA9001493A1 /* Structs */,
 				6B3743462199AAE1001493A1 /* Linna.h */,
 				6B3743472199AAE1001493A1 /* Info.plist */,
@@ -111,8 +118,18 @@
 			isa = PBXGroup;
 			children = (
 				6B37437A219C0D1F001493A1 /* Caller.swift */,
+				6B374380219C19A4001493A1 /* LogContents.swift */,
 			);
 			path = Structs;
+			sourceTree = "<group>";
+		};
+		6B37437D219C1939001493A1 /* Formatter */ = {
+			isa = PBXGroup;
+			children = (
+				6B37437E219C194F001493A1 /* LogFormatter.swift */,
+				6B374382219C1E63001493A1 /* DefaultLogFormatter.swift */,
+			);
+			path = Formatter;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -247,9 +264,12 @@
 			files = (
 				6B3743762199B36C001493A1 /* LogBuilder.swift in Sources */,
 				6B37436E2199AE65001493A1 /* Linna.swift in Sources */,
+				6B374381219C19A4001493A1 /* LogContents.swift in Sources */,
 				6B3743742199B2FA001493A1 /* Linna+ConsoleOutput.swift in Sources */,
 				6B37437B219C0D1F001493A1 /* Caller.swift in Sources */,
 				6B3743702199AF2E001493A1 /* Linna+LogLevel.swift in Sources */,
+				6B37437F219C194F001493A1 /* LogFormatter.swift in Sources */,
+				6B374383219C1E63001493A1 /* DefaultLogFormatter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
