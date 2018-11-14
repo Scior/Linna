@@ -35,16 +35,14 @@ final class LogBuilder {
      
      - Parameters:
        - objects: Main contents for logging.
-       - fileName: The file name from which this method is called. Given by default.
-       - function: The function name from which this method is called. Given by default.
-       - line: The number of line from which this method is called. Given by default.
+       - caller: A caller of logger.
      */
-    static func build(objects: [Any], tags: [String] = [], fileName: String = #file, function: String = #function, line: UInt = #line) -> String {
+    static func build(objects: [Any], tags: [String] = [], caller: Caller) -> String {
         let dateTime = dateFormatter.string(from: Date())
         
         var output = [dateTime]
         output += tags.map { "[\($0)]" }
-        output.append("[\(function):\(line)]")
+        output.append("[\(caller.functionName):\(caller.lineNumber)]")
         output += objects.map { "\($0)" }
         
         return output.joined(separator: " ")
