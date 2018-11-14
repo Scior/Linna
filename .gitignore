@@ -57,7 +57,7 @@ playground.xcworkspace
 # Carthage/Checkouts
 
 Carthage/Build
-LinnaSampleApp/Carthage/Build
+LinnaSampleApp/Carthage
 
 # fastlane
 #
