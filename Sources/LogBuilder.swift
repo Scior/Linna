@@ -9,7 +9,7 @@
 /**
  The class for building a log string.
  */
-final class LogBuilder {
+class LogBuilder {
     
     // MARK: - Properties
     

@@ -15,7 +15,7 @@ final class Linna {
     
     // MARK: - Properties
     
-    static let logBuilder = LogBuilder()
+    static var logBuilder = LogBuilder()
     
     // MARK: - Lifecycle
     
