@@ -4,7 +4,7 @@
 # In general, you can use the options available
 # fastlane scan --help
 
-# scheme("Example")
+scheme('Linna')
 
 devices(["iPhone 8 Plus"])
 clean(true)

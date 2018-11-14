@@ -11,7 +11,7 @@ import Foundation
 /**
  The main class for Linna contains logging functions.
  */
-final class Linna {
+public final class Linna {
     
     // MARK: - Properties
     

@@ -38,7 +38,7 @@ class LogBuilder {
        - objects: Main contents for logging.
        - caller: A caller of logger.
      */
-    func build(objects: [Any], level: Linna.LogLevel, tags: [String] = [], caller: Caller) -> String {
+    func build(objects: [Any], level: Linna.LogLevel, tags: [String] = [], caller: Caller) -> String? {
         let dateTime = dateFormatter.string(from: Date())
         
         return DefaultLogFormatter().format(from: LogContents(date: dateTime, level: level, objects: objects, caller: caller))
