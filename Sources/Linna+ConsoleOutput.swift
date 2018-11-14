@@ -19,9 +19,14 @@ extension Linna {
        - function: The function name from which this method is called. Given by default.
        - line: The number of line from which this method is called. Given by default.
      */
-    static func cout(_ objects: Any..., fileName: String = #file, function: String = #function, line: UInt = #line) {
+    static func cout(_ objects: Any..., fileName: String = #file, functionName: String = #function, lineNumber: Int = #line) {
         let logLevel = LogLevel.info.outputName()
-        let output = LogBuilder.build(objects: objects, tags: [logLevel], fileName: fileName, function: function, line: line)
+        let output = logBuilder.build(
+            objects: objects,
+            level: .info,
+            tags: [logLevel],
+            caller: Caller(fileName: fileName, functionName: functionName, lineNumber: lineNumber)
+        )
         print(output)
     }
 }

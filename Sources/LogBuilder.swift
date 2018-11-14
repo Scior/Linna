@@ -9,23 +9,24 @@
 /**
  The class for building a log string.
  */
-final class LogBuilder {
+class LogBuilder {
     
     // MARK: - Properties
     
-    private static let dateFormatter: DateFormatter = {
-        var formatter = DateFormatter()
-        formatter.dateStyle = .medium
-        formatter.timeStyle = .medium
-        formatter.locale = Locale(identifier: "ja_JP")
-        
-        return formatter
-    }()
+    private let dateFormatter: DateFormatter
     
     // MARK: - Lifecycle
     
-    private init() {
-        // Singleton
+    // TODO: Remove a default argument
+    init(formatter: DateFormatter? = nil) {
+        if let formatter = formatter {
+            dateFormatter = formatter
+        } else {
+            dateFormatter = DateFormatter()
+            dateFormatter.dateStyle = .medium
+            dateFormatter.timeStyle = .medium
+            dateFormatter.locale = Locale(identifier: "ja_JP")
+        }
     }
     
     // MARK: - Methods
@@ -35,18 +36,11 @@ final class LogBuilder {
      
      - Parameters:
        - objects: Main contents for logging.
-       - fileName: The file name from which this method is called. Given by default.
-       - function: The function name from which this method is called. Given by default.
-       - line: The number of line from which this method is called. Given by default.
+       - caller: A caller of logger.
      */
-    static func build(objects: [Any], tags: [String] = [], fileName: String = #file, function: String = #function, line: UInt = #line) -> String {
+    func build(objects: [Any], level: Linna.LogLevel, tags: [String] = [], caller: Caller) -> String {
         let dateTime = dateFormatter.string(from: Date())
         
-        var output = [dateTime]
-        output += tags.map { "[\($0)]" }
-        output.append("[\(function):\(line)]")
-        output += objects.map { "\($0)" }
-        
-        return output.joined(separator: " ")
+        return DefaultLogFormatter().format(from: LogContents(date: dateTime, level: level, objects: objects, caller: caller))
     }
 }

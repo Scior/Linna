@@ -15,17 +15,22 @@ class LogBuilderTests: XCTestCase {
     private let testTags = ["HOGE"]
     private let testFileName = "HogeFile"
     private let testFunction = "HogeFunction"
-    private let testLine: UInt = 1_212
+    private let testLine: Int = 1_212
+    
+    private let logBuilder = LogBuilder()
 
     func testBuild() {
-        let actual = LogBuilder.build(
+        let actual = logBuilder.build(
             objects: testObjects,
+            level: .info,
             tags: testTags,
-            fileName: testFileName,
-            function: testFunction,
-            line: testLine)
+            caller: Caller(
+                fileName: testFileName,
+                functionName: testFunction,
+                lineNumber: testLine)
+        )
         
-        let expected = "[\(testTags[0])] [\(testFunction):\(testLine)] \(testObjects[0])"
+        let expected = "[INFO] [\(testFileName).\(testFunction):\(testLine)] \(testObjects[0])"
         
         XCTAssert(actual.contains(expected))
     }
