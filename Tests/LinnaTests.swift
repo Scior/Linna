@@ -10,7 +10,5 @@ import XCTest
 @testable import Linna
 
 class LinnaTests: XCTestCase {
-    func testLinna() {
-        Linna.cout("hoge")
-    }
+
 }

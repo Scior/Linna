@@ -39,18 +39,18 @@ extension LogFormatter {
      */
     func format(from contents: LogContents, with pattern: String) -> String {
         return pattern
-            .safeReplace(of: "%d", with: contents.date)
-            .safeReplace(of: "%obj", with: contents.objects.map({ "\($0)" }).joined(separator: " "))
-            .safeReplace(of: "%level", with: contents.level.outputName())
-            .safeReplace(of: "%file", with: contents.caller.fileName)
-            .safeReplace(of: "%func", with: contents.caller.functionName)
-            .safeReplace(of: "%line", with: String(contents.caller.lineNumber))
+            .replaceSafely(of: "%d", with: contents.date)
+            .replaceSafely(of: "%obj", with: contents.objects.map({ "\($0)" }).joined(separator: " "))
+            .replaceSafely(of: "%level", with: contents.level.outputName())
+            .replaceSafely(of: "%file", with: contents.caller.fileName)
+            .replaceSafely(of: "%func", with: contents.caller.functionName)
+            .replaceSafely(of: "%line", with: String(contents.caller.lineNumber))
             .completeSafeReplacing()
     }
 }
 
-extension String {
-    func safeReplace(of target: String, with replacement: String) -> String {
+fileprivate extension String {
+    func replaceSafely(of target: String, with replacement: String) -> String {
         return self.replacingOccurrences(of: target, with: "%%" + replacement)
     }
     
