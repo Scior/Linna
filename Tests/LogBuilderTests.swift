@@ -20,7 +20,7 @@ class LogBuilderTests: XCTestCase {
     private let logBuilder = LogBuilder()
 
     func testBuild() {
-        let actual = logBuilder.build(
+        guard let actual = logBuilder.build(
             objects: testObjects,
             level: .info,
             tags: testTags,
@@ -28,7 +28,10 @@ class LogBuilderTests: XCTestCase {
                 fileName: testFileName,
                 functionName: testFunction,
                 lineNumber: testLine)
-        )
+        ) else {
+            XCTFail("Unexpected nil.")
+            return
+        }
         
         let expected = "[INFO] [\(testFileName).\(testFunction):\(testLine)] \(testObjects[0])"
         
