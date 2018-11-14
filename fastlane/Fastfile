@@ -36,6 +36,7 @@ platform :ios do
       proj: options[:proj],
       scheme: options[:scheme],
       build_directory: options[:derived_data],
+      ignore: ['Tests/*'],
       travis: true,
       coveralls: true
     )
