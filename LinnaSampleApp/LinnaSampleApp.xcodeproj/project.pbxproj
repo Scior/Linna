@@ -12,7 +12,7 @@
 		6B37439B219C4CA4001493A1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B374399219C4CA4001493A1 /* Main.storyboard */; };
 		6B37439D219C4CAC001493A1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6B37439C219C4CAC001493A1 /* Assets.xcassets */; };
 		6B3743A0219C4CAC001493A1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B37439E219C4CAC001493A1 /* LaunchScreen.storyboard */; };
-		6B3743CB219C5871001493A1 /* Linna.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6B3743C9219C5871001493A1 /* Linna.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		6B3743CE219C63AA001493A1 /* Linna.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6B3743CC219C63A9001493A1 /* Linna.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -22,7 +22,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				6B3743CB219C5871001493A1 /* Linna.framework in Embed Frameworks */,
+				6B3743CE219C63AA001493A1 /* Linna.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -37,7 +37,7 @@
 		6B37439C219C4CAC001493A1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6B37439F219C4CAC001493A1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6B3743A1219C4CAC001493A1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6B3743C9219C5871001493A1 /* Linna.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Linna.framework; path = "../../../Library/Developer/Xcode/DerivedData/Linna-gomhlhnmqtxtgxhipvgcybmcwcab/Build/Products/Debug-iphonesimulator/Linna.framework"; sourceTree = "<group>"; };
+		6B3743CC219C63A9001493A1 /* Linna.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Linna.framework; path = Carthage/Build/iOS/Linna.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,7 +54,7 @@
 		6B374389219C4CA4001493A1 = {
 			isa = PBXGroup;
 			children = (
-				6B3743C9219C5871001493A1 /* Linna.framework */,
+				6B3743CC219C63A9001493A1 /* Linna.framework */,
 				6B374394219C4CA4001493A1 /* LinnaSampleApp */,
 				6B374393219C4CA4001493A1 /* Products */,
 				6B3743A7219C4D46001493A1 /* Frameworks */,
