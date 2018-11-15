@@ -13,7 +13,7 @@ class CustomizableLogFormatter: LogFormatter {
 
     // MARK: - Properties
     
-    private let pattern: String
+    let pattern: String
     
     // MARK: - Lifecycle
     
