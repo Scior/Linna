@@ -13,12 +13,15 @@ class LogBuilder {
     
     // MARK: - Properties
     
-    private let dateFormatter: DateFormatter
+    let logFormatter: LogFormatter
+    let dateFormatter: DateFormatter
     
     // MARK: - Lifecycle
     
     // TODO: Remove a default argument
-    init(formatter: DateFormatter? = nil) {
+    init(logFormatter: LogFormatter, formatter: DateFormatter? = nil) {
+        self.logFormatter = logFormatter
+        
         if let formatter = formatter {
             dateFormatter = formatter
         } else {
@@ -41,6 +44,6 @@ class LogBuilder {
     func build(objects: [Any], level: Linna.LogLevel, tags: [String] = [], caller: Caller) -> String? {
         let dateTime = dateFormatter.string(from: Date())
         
-        return DefaultLogFormatter().format(from: LogContents(date: dateTime, level: level, objects: objects, caller: caller))
+        return logFormatter.format(from: LogContents(date: dateTime, level: level, objects: objects, caller: caller))
     }
 }

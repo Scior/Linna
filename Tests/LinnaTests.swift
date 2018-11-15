@@ -6,9 +6,16 @@
 //  Copyright © 2018 Suita Fujino. All rights reserved.
 //
 
-import XCTest
 @testable import Linna
+import XCTest
 
 class LinnaTests: XCTestCase {
+    
+    private let testPattern = "%d HOGE Fuga"
+    
+    func testSetPattern() {
+        Linna.setPattern(pattern: testPattern)
+        XCTAssertEqual(testPattern, (Linna.logBuilder.logFormatter as? CustomizableLogFormatter)?.pattern)
+    }
 
 }
