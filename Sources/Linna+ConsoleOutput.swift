@@ -28,7 +28,7 @@ extension Linna {
             caller: Caller(fileName: filePath.getFileName(), functionName: functionName, lineNumber: lineNumber)
         ) else { return }
         
-        print(output)
+        consoleStream.out(message: output)
     }
 }
 

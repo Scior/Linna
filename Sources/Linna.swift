@@ -18,6 +18,8 @@ public final class Linna {
         logFormatter: DefaultLogFormatter(),
         dateFormatter: DefaultDateFormatter().formatter
     )
+
+    static var consoleStream: LinnaStream = ConsoleStream()
     
     // MARK: - Lifecycle
     

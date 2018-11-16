@@ -16,6 +16,14 @@ class LinnaConsoleOutputTests: XCTestCase {
             return "HOGE"
         }
     }
+    
+    class ConsoleStreamMock: LinnaStream {
+        var outputResult: String?
+        
+        func out(message: String) {
+            outputResult = message
+        }
+    }
 
     override func setUp() {
         super.setUp()
@@ -24,10 +32,13 @@ class LinnaConsoleOutputTests: XCTestCase {
             logFormatter: DefaultLogFormatter(),
             dateFormatter: DefaultDateFormatter().formatter
         )
+        Linna.consoleStream = ConsoleStreamMock()
     }
 
     func testCout() {
-        Linna.cout("aaa")
+        let testMessage = "aaa"
+        Linna.cout(testMessage)
+        XCTAssertEqual("HOGE", (Linna.consoleStream as? ConsoleStreamMock)?.outputResult)
     }
     
 }
