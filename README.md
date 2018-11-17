@@ -11,14 +11,33 @@
 
 ## What's this?
 
-Linna is a simple customizable logger for iOS, fully compatible with Swift.
+Linna is a simple customizable logger for iOS, fully compatible with Swift.  
 
 ## Installation
 
 ### With Carthage
 
-* Add the following line to `Cartfile`
+- Add the following line to `Cartfile`.
 
 ```ruby
 github "Scior/Linna"
+```
+
+- Run `carthage install`.
+
+- Add `Linna.framework` to your project.
+
+![Framework Installation](./Docs/images/framework_installation.png)
+
+## Usage
+
+- Import from the source file and simply call the methods.
+
+```swift
+import Linna
+
+func someFunc() {
+    // Sample for the console output with the default format
+    Linna.cout("Hello!")
+}
 ```
