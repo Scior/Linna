@@ -27,7 +27,7 @@ github "Scior/Linna"
 
 - Add `Linna.framework` to your project.
 
-![Framework Installation](./Docs/images/framework_installation.png)
+![Framework Installation](./docs/images/framework_installation.png)
 
 ## Usage
 
