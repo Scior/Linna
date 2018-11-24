@@ -23,7 +23,7 @@ Linna is a simple customizable logger for iOS, fully compatible with Swift.
 github "Scior/Linna"
 ```
 
-- Run `carthage install`.
+- Run `carthage update`.
 
 - Add `Linna.framework` to your project.
 
