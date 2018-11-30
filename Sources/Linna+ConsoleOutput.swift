@@ -15,19 +15,26 @@ extension Linna {
      
      - Parameters:
        - objects: Main contents for logging.
-       - fileName: The file name from which this method is called. Given by default.
+       - filePath: The file path from which this method is called. Given by default.
        - function: The function name from which this method is called. Given by default.
        - line: The number of line from which this method is called. Given by default.
      */
-    public static func cout(_ objects: Any..., fileName: String = #file, functionName: String = #function, lineNumber: Int = #line) {
+    public static func cout(_ objects: Any..., filePath: String = #file, functionName: String = #function, lineNumber: Int = #line) {
         let logLevel = LogLevel.info.outputName()
         guard let output = logBuilder.build(
             objects: objects,
             level: .info,
             tags: [logLevel],
-            caller: Caller(fileName: fileName, functionName: functionName, lineNumber: lineNumber)
+            caller: Caller(fileName: filePath.getFileName(), functionName: functionName, lineNumber: lineNumber)
         ) else { return }
         
         print(output)
+    }
+}
+
+fileprivate extension String {
+    func getFileName() -> String {
+        guard let subSequence = self.split(separator: "/").last else { return "" }
+        return String(subSequence)
     }
 }

@@ -19,7 +19,11 @@ class LinnaConsoleOutputTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
-        Linna.logBuilder = LogBuilderMock(logFormatter: DefaultLogFormatter())
+        // NOTE: To show the default output, comment out the following line.
+        Linna.logBuilder = LogBuilderMock(
+            logFormatter: DefaultLogFormatter(),
+            dateFormatter: DefaultDateFormatter().formatter
+        )
     }
 
     func testCout() {
