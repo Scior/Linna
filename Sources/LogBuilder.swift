@@ -18,18 +18,9 @@ class LogBuilder {
     
     // MARK: - Lifecycle
     
-    // TODO: Remove a default argument
-    init(logFormatter: LogFormatter, formatter: DateFormatter? = nil) {
+    init(logFormatter: LogFormatter, dateFormatter: DateFormatter) {
         self.logFormatter = logFormatter
-        
-        if let formatter = formatter {
-            dateFormatter = formatter
-        } else {
-            dateFormatter = DateFormatter()
-            dateFormatter.dateStyle = .medium
-            dateFormatter.timeStyle = .medium
-            dateFormatter.locale = Locale(identifier: "ja_JP")
-        }
+        self.dateFormatter = dateFormatter
     }
     
     // MARK: - Methods

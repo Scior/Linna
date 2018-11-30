@@ -13,7 +13,11 @@ public final class Linna {
 
     // MARK: - Properties
     
-    static var logBuilder = LogBuilder(logFormatter: DefaultLogFormatter())
+    /// The shared instance of `LogBuilder`, which constructs the log outputs.
+    static var logBuilder = LogBuilder(
+        logFormatter: DefaultLogFormatter(),
+        dateFormatter: DefaultDateFormatter().formatter
+    )
     
     // MARK: - Lifecycle
     
@@ -23,7 +27,16 @@ public final class Linna {
     
     // MARK: - Methods
     
-    public static func setPattern(pattern: String) {
-        logBuilder = LogBuilder(logFormatter: CustomizableLogFormatter(pattern: pattern))
+    /**
+     Set the format pattern for outputting logs.
+     
+     - Parameters:
+       - pattern: The format pattern to set.
+     */
+    public static func setPattern(with pattern: String) {
+        logBuilder = LogBuilder(
+            logFormatter: CustomizableLogFormatter(pattern: pattern),
+            dateFormatter: DefaultDateFormatter().formatter
+        )
     }
 }

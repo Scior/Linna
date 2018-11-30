@@ -28,6 +28,8 @@
 		6B865D1D21B1832900C43AAF /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B865D1C21B1832900C43AAF /* Result.swift */; };
 		6B865D2021B1837B00C43AAF /* ResultTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B865D1F21B1837B00C43AAF /* ResultTests.swift */; };
 		6B865D2221B18FB100C43AAF /* FormatPatternValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B865D2121B18FB100C43AAF /* FormatPatternValidatorTests.swift */; };
+		6B865D2521B1B1B000C43AAF /* DefaultDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B865D2421B1B1B000C43AAF /* DefaultDateFormatter.swift */; };
+		6B865D2721B1B20A00C43AAF /* LinnaDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B865D2621B1B20A00C43AAF /* LinnaDateFormatter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +67,8 @@
 		6B865D1C21B1832900C43AAF /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		6B865D1F21B1837B00C43AAF /* ResultTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultTests.swift; sourceTree = "<group>"; };
 		6B865D2121B18FB100C43AAF /* FormatPatternValidatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatPatternValidatorTests.swift; sourceTree = "<group>"; };
+		6B865D2421B1B1B000C43AAF /* DefaultDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultDateFormatter.swift; sourceTree = "<group>"; };
+		6B865D2621B1B20A00C43AAF /* LinnaDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinnaDateFormatter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +111,7 @@
 		6B3743452199AAE1001493A1 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				6B865D2321B1B19200C43AAF /* DateFormatter */,
 				6B865D1B21B1831700C43AAF /* Enums */,
 				6B37437D219C1939001493A1 /* Formatter */,
 				6B374379219C0CA9001493A1 /* Structs */,
@@ -178,6 +183,15 @@
 				6B865D1F21B1837B00C43AAF /* ResultTests.swift */,
 			);
 			path = Enums;
+			sourceTree = "<group>";
+		};
+		6B865D2321B1B19200C43AAF /* DateFormatter */ = {
+			isa = PBXGroup;
+			children = (
+				6B865D2421B1B1B000C43AAF /* DefaultDateFormatter.swift */,
+				6B865D2621B1B20A00C43AAF /* LinnaDateFormatter.swift */,
+			);
+			path = DateFormatter;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -314,7 +328,9 @@
 				6B37436E2199AE65001493A1 /* Linna.swift in Sources */,
 				6B374381219C19A4001493A1 /* LogContents.swift in Sources */,
 				6B3743742199B2FA001493A1 /* Linna+ConsoleOutput.swift in Sources */,
+				6B865D2521B1B1B000C43AAF /* DefaultDateFormatter.swift in Sources */,
 				6B37437B219C0D1F001493A1 /* Caller.swift in Sources */,
+				6B865D2721B1B20A00C43AAF /* LinnaDateFormatter.swift in Sources */,
 				6B3743702199AF2E001493A1 /* Linna+LogLevel.swift in Sources */,
 				6B865D1A21B1807C00C43AAF /* FormatPatternValidator.swift in Sources */,
 				6B37437F219C194F001493A1 /* LogFormatter.swift in Sources */,

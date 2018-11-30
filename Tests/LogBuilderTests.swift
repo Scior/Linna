@@ -17,7 +17,10 @@ class LogBuilderTests: XCTestCase {
     private let testFunction = "HogeFunction"
     private let testLine: Int = 1_212
     
-    private let logBuilder = LogBuilder(logFormatter: DefaultLogFormatter())
+    private let logBuilder = LogBuilder(
+        logFormatter: DefaultLogFormatter(),
+        dateFormatter: DefaultDateFormatter().formatter
+    )
 
     func testBuild() {
         guard let actual = logBuilder.build(
