@@ -7,12 +7,12 @@
 //
 
 /**
- The `struct` which contains the caller infomation such as the function name.
+ A struct which contains the caller infomation such as the function name.
  */
 struct Caller {
     
     // MARK: - Properties
-    
+
     let fileName: String
     let functionName: String
     let lineNumber: Int

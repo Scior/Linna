@@ -17,4 +17,5 @@ struct LogContents {
     let level: Linna.LogLevel
     let objects: [Any]
     let caller: Caller
+    
 }

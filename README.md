@@ -33,7 +33,9 @@ github "Scior/Linna"
 
 ## Usage
 
-- Import **Linna** and simply call the methods.
+### Simplest way
+
+Import **Linna** and simply call the methods.
 
 ```swift
 import Linna
@@ -44,6 +46,26 @@ func someFunc() {
 }
 ```
 
+### With a customized format
+
+Heres are replaced attributes.
+
+- `%d`: Replaced with a date string.
+- `%obj`: Replaced with objects.
+- `%level`: Replaced with a log level.
+- `%file`: Replaced with a file name.
+- `%func`: Replaced with a function name.
+- `%line`: Replaced with a line number.
+
+A format pattern must be set before calling output methods.
+
+```swift
+Linna.setPattern(pattern: "%d %obj <%level> #%file:%func:%line#")
+Linna.cout("Hello!")
+```
+
 ## License
-Copyright (c) 2018 Suita Fujino
+
 **Linna** is under MIT License.
+
+Copyright (c) 2018 Suita Fujino  
