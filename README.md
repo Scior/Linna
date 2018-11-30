@@ -13,7 +13,7 @@
 
 ## What's this?
 
-Linna is a simple customizable logger for iOS, fully compatible with Swift.  
+**Linna** is a simple customizable logger for iOS, fully compatible with Swift.  
 
 ## Installation
 
@@ -33,7 +33,7 @@ github "Scior/Linna"
 
 ## Usage
 
-- Import from the source file and simply call the methods.
+- Import **Linna** and simply call the methods.
 
 ```swift
 import Linna
@@ -43,3 +43,7 @@ func someFunc() {
     Linna.cout("Hello!")
 }
 ```
+
+## License
+Copyright (c) 2018 Suita Fujino
+**Linna** is under MIT License.
