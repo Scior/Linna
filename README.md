@@ -11,6 +11,11 @@
 
 ----
 
+- [What's this?](#whats-this)
+- [Installation](#installation)
+- [Usage](#usage)
+- [License](#license)
+
 ## What's this?
 
 **Linna** is a simple customizable logger for iOS, fully compatible with Swift.  
@@ -33,7 +38,7 @@ github "Scior/Linna"
 
 ## Usage
 
-### Simplest way
+### The simplest way
 
 Import **Linna** and simply call the methods.
 
