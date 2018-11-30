@@ -6,11 +6,18 @@ cache:
   directories:
   - vendor/bundle
 
+addons:
+  sonarcloud:
+    organization: scior-github
+    token:
+      secure: "0CLSN1u8T0q+2CKTi2QzFJTsA8Dzr6rV1qcC5JRRm0IajWWM36EpDDOqIDFRE8v0o71CA6VcWWc6dS2Erd8C/Fan0K97cCHmiUXyhhX/s4xLf5niETrywrMGywkd1TelF4a355kLBdWQ69GuOe5xBP842gxtYkCE7Fq9XiT29mW3P5lG+FLa/fqBRBe5Ph9yDTHiqnBLtsOnhEHNsUEp8pK6dzSFBohARZshVOPectYcUcn5aia8q9lu5XlNOer4x/N9aFfuGB3Y9RzD5iOaBpEhExZpS0nfw258GR+pmM0E597RrVegjmDvc45LAXcVkW2cMNj+9qz4Zggq3WtqrPihCo+lfRqTXB1kBBxGLl9ADCZfkL9pZ2OlUr/NgO8eIqeRqXuhS0CDuaNqHRRIOT3P1F1YKLCAcji8JYw8wRbMC0mhQO36T7qrZxytEXxMF4usCamDQe9d1CUwW1waXqf2Xi8sKuxqF34b8pIbPHcLpf94nz9Wt/hMaIEv68LJCflgoOIJbRxIIAsPcuthYjsCnnoWg1sq/LaNIbWpbz4M3X7a6r+bHXAeiZHuTJXc3flTLCS4jBtgr3lVKjbK9MlEn2BfxU3oxhnvvx0u/oDJwkB13tCAV5JfL8ot0/6ujRzrXRsLQwLnNhZowmIPMPppSofWIMPLHYTWHAxToBc="
+
 before_script:
   - bundle exec danger
 
 script:
   - fastlane coverage
+  - sonar-scanner -X
 
 branches:
   only:
