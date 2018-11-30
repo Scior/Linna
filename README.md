@@ -46,6 +46,12 @@ func someFunc() {
 }
 ```
 
+The output will be,
+
+```text
+2018/12/01 03:25:03 [INFO] [xxx.swift::someFunc():5] Hello!
+```
+
 ### With a customized format
 
 Heres are replaced attributes.
