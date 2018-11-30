@@ -36,7 +36,7 @@ class LogBuilderTests: XCTestCase {
             return
         }
         
-        let expected = "[INFO] [\(testFileName).\(testFunction):\(testLine)] \(testObjects[0])"
+        let expected = "[INFO] [\(testFileName)::\(testFunction):\(testLine)] \(testObjects[0])"
         
         XCTAssert(actual.contains(expected))
     }
