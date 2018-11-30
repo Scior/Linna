@@ -11,9 +11,11 @@
  */
 class FormatPatternValidator {
     
+    public typealias ValidationResult = Result<Void, String>
+    
     // MARK: - Properties
     
-    let reservedParameters = ["d", "obj", "level", "file", "func", "line"]
+    let reservedParameters = ["%d", "%obj", "%level", "%file", "%func", "%line"]
     
     // MARK: - Methods
     

@@ -25,9 +25,5 @@ class CustomizableLogFormatterTests: XCTestCase {
             "\(contents.date) XAXA BBXX <\(contents.level.outputName())> #\(contents.caller.fileName):\(contents.caller.functionName):\(contents.caller.lineNumber)#"
         )
     }
-    
-    func testValidate() {
-        
-    }
 
 }
