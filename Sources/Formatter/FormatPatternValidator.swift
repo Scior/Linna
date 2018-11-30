@@ -37,8 +37,8 @@ class FormatPatternValidator {
             result = result.replacingOccurrences(of: param, with: "A$")
         }
         if result.contains("%") {
-            // TODO:
-            return .error("TBD")
+            // TODO: Specify the parameter
+            return .error("Illegal parameter found.")
         }
         
         return .ok(())

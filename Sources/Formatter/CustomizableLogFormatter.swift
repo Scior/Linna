@@ -32,5 +32,5 @@ class CustomizableLogFormatter: LogFormatter {
     func format(from contents: LogContents) -> String? {
         return format(from: contents, with: pattern)
     }
-    
+
 }

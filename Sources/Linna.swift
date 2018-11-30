@@ -10,7 +10,7 @@
  The main class for Linna contains logging functions.
  */
 public final class Linna {
-    
+
     // MARK: - Properties
     
     static var logBuilder = LogBuilder(logFormatter: DefaultLogFormatter())
