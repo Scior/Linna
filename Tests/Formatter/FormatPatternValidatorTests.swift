@@ -19,8 +19,14 @@ class FormatPatternValidatorTests: XCTestCase {
         XCTAssertTrue(actual.isOk())
     }
     
-    func testValidateShouldFail() {
+    func testValidateShouldFailWithInvalidParamName() {
         let pattern = "%d %hoge aaa"
+        let actual = validator.validate(for: pattern)
+        XCTAssertTrue(actual.isError())
+    }
+    
+    func testValidateShouldFailWithInvalidCharacter() {
+        let pattern = "%d %%aaa"
         let actual = validator.validate(for: pattern)
         XCTAssertTrue(actual.isError())
     }

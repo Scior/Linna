@@ -14,7 +14,7 @@ class LinnaTests: XCTestCase {
     private let testPattern = "%d HOGE Fuga"
     
     func testSetPattern() {
-        Linna.setPattern(pattern: testPattern)
+        Linna.setPattern(with: testPattern)
         XCTAssertEqual(testPattern, (Linna.logBuilder.logFormatter as? CustomizableLogFormatter)?.pattern)
     }
 
