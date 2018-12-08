@@ -1,5 +1,5 @@
 //
-//  Linna+ConsoleOutputTests.swift
+//  Linna+OutputsTests.swift
 //  LinnaTests
 //
 //  Created by Suita Fujino on 2018/11/14.
@@ -9,7 +9,7 @@
 @testable import Linna
 import XCTest
 
-class LinnaConsoleOutputTests: XCTestCase {
+class LinnaOutputsTests: XCTestCase {
     
     class LogBuilderMock: LogBuilder {
         override func build(objects: [Any], level: Linna.LogLevel, tags: [String], caller: Caller) -> String {
@@ -24,6 +24,8 @@ class LinnaConsoleOutputTests: XCTestCase {
             outputResult = message
         }
     }
+    
+    let localFileStreamMock = LocalFileStream(filePath: "hogetaro")
 
     override func setUp() {
         super.setUp()
@@ -33,12 +35,17 @@ class LinnaConsoleOutputTests: XCTestCase {
             dateFormatter: DefaultDateFormatter().formatter
         )
         Linna.consoleStream = ConsoleStreamMock()
+        Linna.localFileStream = localFileStreamMock
     }
 
     func testCout() {
         let testMessage = "aaa"
         Linna.cout(testMessage)
         XCTAssertEqual("HOGE", (Linna.consoleStream as? ConsoleStreamMock)?.outputResult)
+    }
+    
+    func testFout() {
+        Linna.fout("uuu")
     }
     
 }

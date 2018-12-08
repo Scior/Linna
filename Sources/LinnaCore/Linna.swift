@@ -19,7 +19,10 @@ public final class Linna {
         dateFormatter: DefaultDateFormatter().formatter
     )
 
+    /// The stream for console outputs.
     static var consoleStream: LinnaStream = ConsoleStream()
+    /// The stream for file outputs.
+    static var localFileStream: LinnaStream?
     
     // MARK: - Lifecycle
     

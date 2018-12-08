@@ -9,7 +9,7 @@
 /**
  The protocol for the output stream.
  */
-protocol LinnaStream {
+public protocol LinnaStream {
     /**
      Outputs the message with the defined stream.
      

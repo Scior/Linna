@@ -7,7 +7,7 @@
 //
 
 /**
- The output stream for console.
+ The output stream for the console.
  */
 class ConsoleStream: LinnaStream {
     func out(message: String) {

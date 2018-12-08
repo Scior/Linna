@@ -12,8 +12,8 @@
 		6B3743542199AAE2001493A1 /* Linna.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B3743462199AAE1001493A1 /* Linna.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6B37436E2199AE65001493A1 /* Linna.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37436D2199AE65001493A1 /* Linna.swift */; };
 		6B3743702199AF2E001493A1 /* Linna+LogLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37436F2199AF2E001493A1 /* Linna+LogLevel.swift */; };
-		6B3743722199B179001493A1 /* LogLevelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B3743712199B179001493A1 /* LogLevelTests.swift */; };
-		6B3743742199B2FA001493A1 /* Linna+ConsoleOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B3743732199B2FA001493A1 /* Linna+ConsoleOutput.swift */; };
+		6B3743722199B179001493A1 /* Linna+LogLevelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B3743712199B179001493A1 /* Linna+LogLevelTests.swift */; };
+		6B3743742199B2FA001493A1 /* Linna+Outputs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B3743732199B2FA001493A1 /* Linna+Outputs.swift */; };
 		6B3743762199B36C001493A1 /* LogBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B3743752199B36C001493A1 /* LogBuilder.swift */; };
 		6B374378219B2767001493A1 /* LogBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B374377219B2767001493A1 /* LogBuilderTests.swift */; };
 		6B37437B219C0D1F001493A1 /* Caller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B37437A219C0D1F001493A1 /* Caller.swift */; };
@@ -21,10 +21,12 @@
 		6B374381219C19A4001493A1 /* LogContents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B374380219C19A4001493A1 /* LogContents.swift */; };
 		6B374383219C1E63001493A1 /* DefaultLogFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B374382219C1E63001493A1 /* DefaultLogFormatter.swift */; };
 		6B374386219C25B3001493A1 /* LogFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B374385219C25B3001493A1 /* LogFormatterTests.swift */; };
-		6B374388219C2DFF001493A1 /* Linna+ConsoleOutputTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B374387219C2DFF001493A1 /* Linna+ConsoleOutputTests.swift */; };
+		6B374388219C2DFF001493A1 /* Linna+OutputsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B374387219C2DFF001493A1 /* Linna+OutputsTests.swift */; };
 		6B6CB23321BC03CB00F86A0E /* ConsoleStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B6CB23121BC03CB00F86A0E /* ConsoleStream.swift */; };
 		6B6CB23421BC03CB00F86A0E /* LinnaStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B6CB23221BC03CB00F86A0E /* LinnaStream.swift */; };
 		6B6CB23921BC04F000F86A0E /* ConsoleStreamTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B6CB23821BC04F000F86A0E /* ConsoleStreamTests.swift */; };
+		6B6CB23D21BC085600F86A0E /* LocalFileStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B6CB23C21BC085600F86A0E /* LocalFileStream.swift */; };
+		6B6CB23F21BD365500F86A0E /* Linna+InternalPrint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B6CB23E21BD365500F86A0E /* Linna+InternalPrint.swift */; };
 		6B8099E2219D8D8C005D44BC /* CustomizableLogFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8099E1219D8D8B005D44BC /* CustomizableLogFormatter.swift */; };
 		6B8099E4219D9051005D44BC /* CustomizableLogFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8099E3219D9051005D44BC /* CustomizableLogFormatterTests.swift */; };
 		6B865D1A21B1807C00C43AAF /* FormatPatternValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B865D1921B1807C00C43AAF /* FormatPatternValidator.swift */; };
@@ -54,8 +56,8 @@
 		6B3743532199AAE2001493A1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6B37436D2199AE65001493A1 /* Linna.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Linna.swift; sourceTree = "<group>"; };
 		6B37436F2199AF2E001493A1 /* Linna+LogLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Linna+LogLevel.swift"; sourceTree = "<group>"; };
-		6B3743712199B179001493A1 /* LogLevelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogLevelTests.swift; sourceTree = "<group>"; };
-		6B3743732199B2FA001493A1 /* Linna+ConsoleOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Linna+ConsoleOutput.swift"; sourceTree = "<group>"; };
+		6B3743712199B179001493A1 /* Linna+LogLevelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Linna+LogLevelTests.swift"; sourceTree = "<group>"; };
+		6B3743732199B2FA001493A1 /* Linna+Outputs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Linna+Outputs.swift"; sourceTree = "<group>"; };
 		6B3743752199B36C001493A1 /* LogBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogBuilder.swift; sourceTree = "<group>"; };
 		6B374377219B2767001493A1 /* LogBuilderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogBuilderTests.swift; sourceTree = "<group>"; };
 		6B37437A219C0D1F001493A1 /* Caller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Caller.swift; sourceTree = "<group>"; };
@@ -63,10 +65,12 @@
 		6B374380219C19A4001493A1 /* LogContents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogContents.swift; sourceTree = "<group>"; };
 		6B374382219C1E63001493A1 /* DefaultLogFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultLogFormatter.swift; sourceTree = "<group>"; };
 		6B374385219C25B3001493A1 /* LogFormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogFormatterTests.swift; sourceTree = "<group>"; };
-		6B374387219C2DFF001493A1 /* Linna+ConsoleOutputTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Linna+ConsoleOutputTests.swift"; sourceTree = "<group>"; };
+		6B374387219C2DFF001493A1 /* Linna+OutputsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Linna+OutputsTests.swift"; sourceTree = "<group>"; };
 		6B6CB23121BC03CB00F86A0E /* ConsoleStream.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConsoleStream.swift; sourceTree = "<group>"; };
 		6B6CB23221BC03CB00F86A0E /* LinnaStream.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinnaStream.swift; sourceTree = "<group>"; };
 		6B6CB23821BC04F000F86A0E /* ConsoleStreamTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConsoleStreamTests.swift; sourceTree = "<group>"; };
+		6B6CB23C21BC085600F86A0E /* LocalFileStream.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalFileStream.swift; sourceTree = "<group>"; };
+		6B6CB23E21BD365500F86A0E /* Linna+InternalPrint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Linna+InternalPrint.swift"; sourceTree = "<group>"; };
 		6B8099E1219D8D8B005D44BC /* CustomizableLogFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizableLogFormatter.swift; sourceTree = "<group>"; };
 		6B8099E3219D9051005D44BC /* CustomizableLogFormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizableLogFormatterTests.swift; sourceTree = "<group>"; };
 		6B865D1921B1807C00C43AAF /* FormatPatternValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatPatternValidator.swift; sourceTree = "<group>"; };
@@ -117,16 +121,14 @@
 		6B3743452199AAE1001493A1 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				6B6CB23021BC037A00F86A0E /* Streams */,
 				6B865D2321B1B19200C43AAF /* DateFormatter */,
 				6B865D1B21B1831700C43AAF /* Enums */,
 				6B37437D219C1939001493A1 /* Formatter */,
+				6B6CB24021BD37E800F86A0E /* LinnaCore */,
+				6B6CB23021BC037A00F86A0E /* Streams */,
 				6B374379219C0CA9001493A1 /* Structs */,
 				6B3743462199AAE1001493A1 /* Linna.h */,
 				6B3743472199AAE1001493A1 /* Info.plist */,
-				6B37436D2199AE65001493A1 /* Linna.swift */,
-				6B3743732199B2FA001493A1 /* Linna+ConsoleOutput.swift */,
-				6B37436F2199AF2E001493A1 /* Linna+LogLevel.swift */,
 				6B3743752199B36C001493A1 /* LogBuilder.swift */,
 			);
 			path = Sources;
@@ -135,14 +137,12 @@
 		6B3743502199AAE2001493A1 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				6B6CB23521BC03D400F86A0E /* Streams */,
 				6B865D1E21B1836400C43AAF /* Enums */,
 				6B374384219C2592001493A1 /* Formatter */,
-				6B3743512199AAE2001493A1 /* LinnaTests.swift */,
+				6B6CB24121BD383A00F86A0E /* LinnaCore */,
+				6B6CB23521BC03D400F86A0E /* Streams */,
 				6B3743532199AAE2001493A1 /* Info.plist */,
-				6B3743712199B179001493A1 /* LogLevelTests.swift */,
 				6B374377219B2767001493A1 /* LogBuilderTests.swift */,
-				6B374387219C2DFF001493A1 /* Linna+ConsoleOutputTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -182,6 +182,7 @@
 			children = (
 				6B6CB23121BC03CB00F86A0E /* ConsoleStream.swift */,
 				6B6CB23221BC03CB00F86A0E /* LinnaStream.swift */,
+				6B6CB23C21BC085600F86A0E /* LocalFileStream.swift */,
 			);
 			path = Streams;
 			sourceTree = "<group>";
@@ -192,6 +193,27 @@
 				6B6CB23821BC04F000F86A0E /* ConsoleStreamTests.swift */,
 			);
 			path = Streams;
+			sourceTree = "<group>";
+		};
+		6B6CB24021BD37E800F86A0E /* LinnaCore */ = {
+			isa = PBXGroup;
+			children = (
+				6B37436D2199AE65001493A1 /* Linna.swift */,
+				6B6CB23E21BD365500F86A0E /* Linna+InternalPrint.swift */,
+				6B37436F2199AF2E001493A1 /* Linna+LogLevel.swift */,
+				6B3743732199B2FA001493A1 /* Linna+Outputs.swift */,
+			);
+			path = LinnaCore;
+			sourceTree = "<group>";
+		};
+		6B6CB24121BD383A00F86A0E /* LinnaCore */ = {
+			isa = PBXGroup;
+			children = (
+				6B3743512199AAE2001493A1 /* LinnaTests.swift */,
+				6B3743712199B179001493A1 /* Linna+LogLevelTests.swift */,
+				6B374387219C2DFF001493A1 /* Linna+OutputsTests.swift */,
+			);
+			path = LinnaCore;
 			sourceTree = "<group>";
 		};
 		6B865D1B21B1831700C43AAF /* Enums */ = {
@@ -353,11 +375,13 @@
 				6B6CB23421BC03CB00F86A0E /* LinnaStream.swift in Sources */,
 				6B37436E2199AE65001493A1 /* Linna.swift in Sources */,
 				6B374381219C19A4001493A1 /* LogContents.swift in Sources */,
-				6B3743742199B2FA001493A1 /* Linna+ConsoleOutput.swift in Sources */,
+				6B3743742199B2FA001493A1 /* Linna+Outputs.swift in Sources */,
 				6B865D2521B1B1B000C43AAF /* DefaultDateFormatter.swift in Sources */,
 				6B6CB23321BC03CB00F86A0E /* ConsoleStream.swift in Sources */,
+				6B6CB23D21BC085600F86A0E /* LocalFileStream.swift in Sources */,
 				6B37437B219C0D1F001493A1 /* Caller.swift in Sources */,
 				6B865D2721B1B20A00C43AAF /* LinnaDateFormatter.swift in Sources */,
+				6B6CB23F21BD365500F86A0E /* Linna+InternalPrint.swift in Sources */,
 				6B3743702199AF2E001493A1 /* Linna+LogLevel.swift in Sources */,
 				6B865D1A21B1807C00C43AAF /* FormatPatternValidator.swift in Sources */,
 				6B37437F219C194F001493A1 /* LogFormatter.swift in Sources */,
@@ -372,9 +396,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				6B6CB23921BC04F000F86A0E /* ConsoleStreamTests.swift in Sources */,
-				6B374388219C2DFF001493A1 /* Linna+ConsoleOutputTests.swift in Sources */,
+				6B374388219C2DFF001493A1 /* Linna+OutputsTests.swift in Sources */,
 				6B3743522199AAE2001493A1 /* LinnaTests.swift in Sources */,
-				6B3743722199B179001493A1 /* LogLevelTests.swift in Sources */,
+				6B3743722199B179001493A1 /* Linna+LogLevelTests.swift in Sources */,
 				6B8099E4219D9051005D44BC /* CustomizableLogFormatterTests.swift in Sources */,
 				6B865D2221B18FB100C43AAF /* FormatPatternValidatorTests.swift in Sources */,
 				6B374378219B2767001493A1 /* LogBuilderTests.swift in Sources */,
@@ -446,7 +470,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -504,7 +528,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
