@@ -16,8 +16,8 @@ extension Linna {
      - Parameters:
        - objects: Main contents for logging.
        - filePath: The file path from which this method is called. Given by default.
-       - function: The function name from which this method is called. Given by default.
-       - line: The number of line from which this method is called. Given by default.
+       - functionName: The function name from which this method is called. Given by default.
+       - lineNumber: The number of line from which this method is called. Given by default.
      */
     public static func cout(_ objects: Any..., filePath: String = #file, functionName: String = #function, lineNumber: Int = #line) {
         output(objects, with: consoleStream, filePath: filePath, functionName: functionName, lineNumber: lineNumber)
@@ -27,10 +27,10 @@ extension Linna {
      Outputs a log message to the file.
      
      - Parameters:
-     - objects: Main contents for logging.
-     - filePath: The file path from which this method is called. Given by default.
-     - function: The function name from which this method is called. Given by default.
-     - line: The number of line from which this method is called. Given by default.
+       - objects: Main contents for logging.
+       - filePath: The file path from which this method is called. Given by default.
+       - functionName: The function name from which this method is called. Given by default.
+       - lineNumber: The number of line from which this method is called. Given by default.
      */
     public static func fout(_ objects: Any..., filePath: String = #file, functionName: String = #function, lineNumber: Int = #line) {
         #if DEBUG
@@ -46,11 +46,11 @@ extension Linna {
      Outputs a log message with the explicit stream.
      
      - Parameters:
-     - objects: Main contents for logging.
-     - stream: The output stream confirms to `LinnaStream`.
-     - filePath: The file path from which this method is called. Given by default.
-     - function: The function name from which this method is called. Given by default.
-     - line: The number of line from which this method is called. Given by default.
+       - objects: Main contents for logging.
+       - stream: The output stream confirms to `LinnaStream`.
+       - filePath: The file path from which this method is called. Given by default.
+       - functionName: The function name from which this method is called. Given by default.
+       - lineNumber: The number of line from which this method is called. Given by default.
      */
     public static func output(_ objects: Any..., with stream: LinnaStream, filePath: String = #file, functionName: String = #function, lineNumber: Int = #line) {
         // TODO: Make settable
