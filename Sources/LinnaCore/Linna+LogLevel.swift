@@ -6,7 +6,7 @@
 //  Copyright © 2018 Suita Fujino. All rights reserved.
 //
 
-/*
+/**
  The extension including log level settings.
  */
 extension Linna {
