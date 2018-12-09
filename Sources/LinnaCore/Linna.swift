@@ -23,6 +23,8 @@ public final class Linna {
     static var consoleStream: LinnaStream = ConsoleStream()
     /// The stream for file outputs.
     static var localFileStream: LinnaStream?
+    /// The streams in use.
+    static var outputStreams: Set<OutputStream> = [.console, .file]
     
     // MARK: - Lifecycle
     

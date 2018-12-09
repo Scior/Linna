@@ -10,6 +10,43 @@
  The extension for outputs.
  */
 extension Linna {
+    
+    /**
+     Represents output streams.
+     */
+    public enum OutputStream {
+        case console
+        case file
+    }
+    
+    /**
+     Outputs a log message to the console.
+     
+     - Parameters:
+     - objects: Main contents for logging.
+     - streams: The set of output streams.
+     - filePath: The file path from which this method is called. Given by default.
+     - functionName: The function name from which this method is called. Given by default.
+     - lineNumber: The number of line from which this method is called. Given by default.
+     */
+    public static func out(_ objects: Any..., with streams: Set<OutputStream>? = nil, filePath: String = #file, functionName: String = #function, lineNumber: Int = #line) {
+        guard let message = buildLogMessage(
+            objects,
+            filePath: filePath,
+            functionName: functionName,
+            lineNumber: lineNumber
+        ) else { return }
+        
+        for stream in streams ?? outputStreams {
+            switch stream {
+            case .console:
+                consoleStream.out(message: message)
+            case .file:
+                localFileStream?.out(message: message)
+            }
+        }
+    }
+    
     /**
      Outputs a log message to the console.
      
@@ -20,7 +57,14 @@ extension Linna {
        - lineNumber: The number of line from which this method is called. Given by default.
      */
     public static func cout(_ objects: Any..., filePath: String = #file, functionName: String = #function, lineNumber: Int = #line) {
-        output(objects, with: consoleStream, filePath: filePath, functionName: functionName, lineNumber: lineNumber)
+        guard let message = buildLogMessage(
+            objects,
+            filePath: filePath,
+            functionName: functionName,
+            lineNumber: lineNumber
+        ) else { return }
+        
+        consoleStream.out(message: message)
     }
     
     /**
@@ -35,7 +79,14 @@ extension Linna {
     public static func fout(_ objects: Any..., filePath: String = #file, functionName: String = #function, lineNumber: Int = #line) {
         #if DEBUG
         if let localFileStream = localFileStream {
-            output(objects, with: localFileStream, filePath: filePath, functionName: functionName, lineNumber: lineNumber)
+            guard let message = buildLogMessage(
+                objects,
+                filePath: filePath,
+                functionName: functionName,
+                lineNumber: lineNumber
+            ) else { return }
+            
+            localFileStream.out(message: message)
         } else {
             iPrint(message: "File stream is not ready. Log messages for the file stream will be discarded.")
         }
@@ -47,22 +98,19 @@ extension Linna {
      
      - Parameters:
        - objects: Main contents for logging.
-       - stream: The output stream confirms to `LinnaStream`.
        - filePath: The file path from which this method is called. Given by default.
        - functionName: The function name from which this method is called. Given by default.
        - lineNumber: The number of line from which this method is called. Given by default.
      */
-    public static func output(_ objects: [Any], with stream: LinnaStream, filePath: String = #file, functionName: String = #function, lineNumber: Int = #line) {
+    private static func buildLogMessage(_ objects: [Any], filePath: String = #file, functionName: String = #function, lineNumber: Int = #line) -> String? {
         // TODO: Make settable
         let logLevel = LogLevel.info.outputName()
-        guard let output = logBuilder.build(
+        return logBuilder.build(
             objects: objects,
             level: .info,
             tags: [logLevel],
             caller: Caller(fileName: filePath.getFileName(), functionName: functionName, lineNumber: lineNumber)
-        ) else { return }
-        
-        stream.out(message: output)
+        )
     }
 }
 
