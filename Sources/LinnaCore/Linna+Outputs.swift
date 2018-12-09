@@ -52,7 +52,7 @@ extension Linna {
        - functionName: The function name from which this method is called. Given by default.
        - lineNumber: The number of line from which this method is called. Given by default.
      */
-    public static func output(_ objects: Any..., with stream: LinnaStream, filePath: String = #file, functionName: String = #function, lineNumber: Int = #line) {
+    public static func output(_ objects: [Any], with stream: LinnaStream, filePath: String = #file, functionName: String = #function, lineNumber: Int = #line) {
         // TODO: Make settable
         let logLevel = LogLevel.info.outputName()
         guard let output = logBuilder.build(
