@@ -14,6 +14,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         Linna.cout("aaa")
+        Linna.setFileOutputPath(to: "tmp/hogetaro")
+        Linna.fout("Hello!")
     }
 
 }
