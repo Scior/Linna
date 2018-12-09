@@ -12,10 +12,11 @@ import XCTest
 class LinnaOutputsTests: XCTestCase {
     
     private let testFilePath = "hogetaro"
+    private static let testMessage = "HOGEmessage1001"
     
     class LogBuilderMock: LogBuilder {
         override func build(objects: [Any], level: Linna.LogLevel, tags: [String], caller: Caller) -> String {
-            return "HOGE"
+            return LinnaOutputsTests.testMessage
         }
     }
     
@@ -41,10 +42,30 @@ class LinnaOutputsTests: XCTestCase {
         )
         Linna.consoleStream = ConsoleStreamMock()
     }
+    
+    func testOut() {
+        removeTestLogFile()
+        Linna.localFileStream = localFileStreamMock
+        
+        Linna.out("aaa")
+        Linna.out("uuu")
+        
+        guard let data = FileManager.default.contents(atPath: testFilePath) else {
+            XCTFail("Unexpected nil")
+            return
+        }
+        
+        XCTAssertEqual(LinnaOutputsTests.testMessage, (Linna.consoleStream as? ConsoleStreamMock)?.outputResult)
+        XCTAssertEqual(
+            "\(LinnaOutputsTests.testMessage)\n\(LinnaOutputsTests.testMessage)\n",
+            String(data: data, encoding: .utf8)
+        )
+    }
 
     func testCout() {
         Linna.cout("aaa")
-        XCTAssertEqual("HOGE", (Linna.consoleStream as? ConsoleStreamMock)?.outputResult)
+        
+        XCTAssertEqual(LinnaOutputsTests.testMessage, (Linna.consoleStream as? ConsoleStreamMock)?.outputResult)
     }
     
     func testFout() {
@@ -56,12 +77,17 @@ class LinnaOutputsTests: XCTestCase {
             XCTFail("Unexpected nil")
             return
         }
-        XCTAssertEqual("HOGE\nHOGE\n", String(data: data, encoding: .utf8))
+        
+        XCTAssertEqual(
+            "\(LinnaOutputsTests.testMessage)\n\(LinnaOutputsTests.testMessage)\n",
+            String(data: data, encoding: .utf8)
+        )
     }
     
     func testFoutWithNilFileStream() {
         removeTestLogFile()
         Linna.fout("uuu")
+        
         XCTAssertFalse(FileManager.default.fileExists(atPath: testFilePath))
     }
     

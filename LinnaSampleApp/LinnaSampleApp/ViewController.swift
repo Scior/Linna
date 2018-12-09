@@ -15,7 +15,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         Linna.cout("aaa")
         Linna.setFileOutputPath(to: "tmp/hogetaro")
-        Linna.fout("Hello!")
+        Linna.out("Hello!")
     }
 
 }

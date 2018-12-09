@@ -47,11 +47,11 @@ import Linna
 
 func someFunc() {
     // Sample for the console output with the default format
-    Linna.cout("Hello!")
+    Linna.out("Hello!")
 }
 ```
 
-The output will be,
+The console output will be,
 
 ```text
 2018/12/01 03:25:03 [INFO] [xxx.swift::someFunc():5] Hello!
@@ -72,7 +72,7 @@ A format pattern must be set before calling output methods.
 
 ```swift
 Linna.setPattern(pattern: "%d %obj <%level> #%file:%func:%line#")
-Linna.cout("Hello!")
+Linna.out("Hello!")
 ```
 
 ### File output
@@ -81,10 +81,34 @@ To output the log file,
 
 ```swift
 Linna.setFileOutputPath(to: "tmp/hogetaro")
-Linna.fout("Bye!")
+Linna.out("Bye!")
 ```
 
 then, a new log file will be created if it doesn't exist, and the log message will be appended to the file.
+
+### Separate the output explicitly
+
+To output solely to the debug console,
+
+```swift
+Linna.cout("Console only")
+```
+
+or to output solely to the file,
+
+```swift
+Linna.setFileOutputPath(to: "tmp/hogejiro")
+Linna.fout("File only")
+```
+
+Otherwise, you can define the default stream to output through `Linna` class.
+
+```swift
+# Console only
+Linna.outputStreams = [.console]
+# Console and file
+Linna.outputStreams = [.console, .file]
+```
 
 ## License
 
