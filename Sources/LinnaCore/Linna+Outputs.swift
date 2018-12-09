@@ -33,8 +33,13 @@ extension Linna {
      - line: The number of line from which this method is called. Given by default.
      */
     public static func fout(_ objects: Any..., filePath: String = #file, functionName: String = #function, lineNumber: Int = #line) {
-        guard let localFileStream = localFileStream else { return }
-        output(objects, with: localFileStream, filePath: filePath, functionName: functionName, lineNumber: lineNumber)
+        #if DEBUG
+        if let localFileStream = localFileStream {
+            output(objects, with: localFileStream, filePath: filePath, functionName: functionName, lineNumber: lineNumber)
+        } else {
+            iPrint(message: "File stream is not ready. Log messages for the file stream will be discarded.")
+        }
+        #endif
     }
     
     /**

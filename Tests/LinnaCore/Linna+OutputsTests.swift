@@ -42,7 +42,6 @@ class LinnaOutputsTests: XCTestCase {
             dateFormatter: DefaultDateFormatter().formatter
         )
         Linna.consoleStream = ConsoleStreamMock()
-        Linna.localFileStream = localFileStreamMock
     }
 
     func testCout() {
@@ -51,12 +50,19 @@ class LinnaOutputsTests: XCTestCase {
     }
     
     func testFout() {
+        Linna.localFileStream = localFileStreamMock
         Linna.fout("uuu")
         guard let data = FileManager.default.contents(atPath: testFilePath) else {
             XCTFail("Unexpected nil")
             return
         }
         XCTAssertEqual("HOGE\n", String(data: data, encoding: .utf8))
+    }
+    
+    func testFoutWithNilFileStream() {
+        try! FileManager.default.removeItem(atPath: testFilePath)
+        Linna.fout("uuu")
+        XCTAssertFalse(FileManager.default.fileExists(atPath: testFilePath))
     }
     
 }

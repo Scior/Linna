@@ -123,7 +123,8 @@
 			children = (
 				6B865D2321B1B19200C43AAF /* DateFormatter */,
 				6B865D1B21B1831700C43AAF /* Enums */,
-				6B37437D219C1939001493A1 /* Formatter */,
+				6B6CB24221BD455300F86A0E /* Errors */,
+				6B37437D219C1939001493A1 /* Formatters */,
 				6B6CB24021BD37E800F86A0E /* LinnaCore */,
 				6B6CB23021BC037A00F86A0E /* Streams */,
 				6B374379219C0CA9001493A1 /* Structs */,
@@ -156,7 +157,7 @@
 			path = Structs;
 			sourceTree = "<group>";
 		};
-		6B37437D219C1939001493A1 /* Formatter */ = {
+		6B37437D219C1939001493A1 /* Formatters */ = {
 			isa = PBXGroup;
 			children = (
 				6B37437E219C194F001493A1 /* LogFormatter.swift */,
@@ -164,7 +165,7 @@
 				6B8099E1219D8D8B005D44BC /* CustomizableLogFormatter.swift */,
 				6B865D1921B1807C00C43AAF /* FormatPatternValidator.swift */,
 			);
-			path = Formatter;
+			path = Formatters;
 			sourceTree = "<group>";
 		};
 		6B374384219C2592001493A1 /* Formatter */ = {
@@ -214,6 +215,13 @@
 				6B374387219C2DFF001493A1 /* Linna+OutputsTests.swift */,
 			);
 			path = LinnaCore;
+			sourceTree = "<group>";
+		};
+		6B6CB24221BD455300F86A0E /* Errors */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Errors;
 			sourceTree = "<group>";
 		};
 		6B865D1B21B1831700C43AAF /* Enums */ = {
