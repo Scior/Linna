@@ -104,9 +104,9 @@ Linna.fout("File only")
 Otherwise, you can define the default stream to output through `Linna` class.
 
 ```swift
-# Console only
+// Console only
 Linna.outputStreams = [.console]
-# Console and file
+// Console and file
 Linna.outputStreams = [.console, .file]
 ```
 
