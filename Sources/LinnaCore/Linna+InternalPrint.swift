@@ -8,7 +8,7 @@
 
 extension Linna {
     
-    internal static let prefixForInternalPrint = "[[Linna]] "
+    internal static let prefixForInternalPrint = "[--Linna--] "
     
     /**
      Prints the event's description occured inside Linna.

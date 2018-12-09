@@ -27,11 +27,12 @@ class LocalFileStream: LinnaStream {
      */
     init?(filePath: String) {
         outputPath = URL(fileURLWithPath: FileManager.default.currentDirectoryPath).appendingPathComponent(filePath)
-        if !FileManager.default.fileExists(atPath: outputPath.absoluteString) {
+        if !FileManager.default.fileExists(atPath: filePath) {
             if (try? "".write(to: outputPath, atomically: false, encoding: .utf8)) == nil {
                 return nil
             }
             Linna.iPrint(message: "Created log file at: \(outputPath)")
+            return
         }
         
         Linna.iPrint(message: "Log file will be found at: \(outputPath)")
@@ -43,7 +44,7 @@ class LocalFileStream: LinnaStream {
         do {
             let fileHandle = try FileHandle(forWritingTo: outputPath)
             fileHandle.seekToEndOfFile()
-            guard let dataToWrite = ("\n" + message).data(using: .utf8) else { return }
+            guard let dataToWrite = (message + "\n").data(using: .utf8) else { return }
             
             fileHandle.write(dataToWrite)
         } catch let error {

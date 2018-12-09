@@ -26,5 +26,6 @@ excluded:
 - Pods/
 - Carthage/
 - vendor/bundle
+- Tests/
 
 line_length: 300

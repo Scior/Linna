@@ -11,6 +11,8 @@ import XCTest
 
 class LinnaOutputsTests: XCTestCase {
     
+    private let testFilePath = "hogetaro"
+    
     class LogBuilderMock: LogBuilder {
         override func build(objects: [Any], level: Linna.LogLevel, tags: [String], caller: Caller) -> String {
             return "HOGE"
@@ -25,7 +27,12 @@ class LinnaOutputsTests: XCTestCase {
         }
     }
     
-    let localFileStreamMock = LocalFileStream(filePath: "hogetaro")
+    lazy var localFileStreamMock: LocalFileStream = {
+        try! FileManager.default.removeItem(atPath: testFilePath)
+        
+        guard let stream = LocalFileStream(filePath: testFilePath) else { fatalError() }
+        return stream
+    }()
 
     override func setUp() {
         super.setUp()
@@ -39,13 +46,17 @@ class LinnaOutputsTests: XCTestCase {
     }
 
     func testCout() {
-        let testMessage = "aaa"
-        Linna.cout(testMessage)
+        Linna.cout("aaa")
         XCTAssertEqual("HOGE", (Linna.consoleStream as? ConsoleStreamMock)?.outputResult)
     }
     
     func testFout() {
         Linna.fout("uuu")
+        guard let data = FileManager.default.contents(atPath: testFilePath) else {
+            XCTFail("Unexpected nil")
+            return
+        }
+        XCTAssertEqual("HOGE\n", String(data: data, encoding: .utf8))
     }
     
 }
