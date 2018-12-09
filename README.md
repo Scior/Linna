@@ -75,6 +75,17 @@ Linna.setPattern(pattern: "%d %obj <%level> #%file:%func:%line#")
 Linna.cout("Hello!")
 ```
 
+### File output
+
+To output the log file,
+
+```swift
+Linna.setFileOutputPath(to: "tmp/hogetaro")
+Linna.fout("Bye!")
+```
+
+then, a new log file will be created if it doesn't exist, and the log message will be appended to the file.
+
 ## License
 
 **Linna** is under MIT License.
