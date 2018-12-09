@@ -12,10 +12,20 @@ import XCTest
 class LinnaTests: XCTestCase {
     
     private let testPattern = "%d HOGE Fuga"
+    private let testFilePath = "hoge1234"
     
     func testSetPattern() {
-        Linna.setPattern(with: testPattern)
+        Linna.setFormatPattern(with: testPattern)
         XCTAssertEqual(testPattern, (Linna.logBuilder.logFormatter as? CustomizableLogFormatter)?.pattern)
+    }
+    
+    func testSetFileOutputPath() {
+        Linna.setFileOutputPath(to: testFilePath)
+        guard let stream = Linna.localFileStream as? LocalFileStream else {
+            XCTFail("Unexpected nil")
+            return
+        }
+        XCTAssertTrue(stream.outputPath.absoluteString.hasSuffix(testFilePath))
     }
 
 }

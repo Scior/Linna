@@ -28,9 +28,7 @@ class LocalFileStream: LinnaStream {
     init?(filePath: String) {
         outputPath = URL(fileURLWithPath: FileManager.default.currentDirectoryPath).appendingPathComponent(filePath)
         if !FileManager.default.fileExists(atPath: filePath) {
-            if (try? "".write(to: outputPath, atomically: false, encoding: .utf8)) == nil {
-                return nil
-            }
+            if (try? "".write(to: outputPath, atomically: false, encoding: .utf8)) == nil { return nil }
             Linna.iPrint(message: "Created log file at: \(outputPath)")
             return
         }

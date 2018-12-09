@@ -28,8 +28,6 @@ class LinnaOutputsTests: XCTestCase {
     }
     
     lazy var localFileStreamMock: LocalFileStream = {
-        try! FileManager.default.removeItem(atPath: testFilePath)
-        
         guard let stream = LocalFileStream(filePath: testFilePath) else { fatalError() }
         return stream
     }()
@@ -50,19 +48,25 @@ class LinnaOutputsTests: XCTestCase {
     }
     
     func testFout() {
+        removeTestLogFile()
         Linna.localFileStream = localFileStreamMock
+        Linna.fout("uuu")
         Linna.fout("uuu")
         guard let data = FileManager.default.contents(atPath: testFilePath) else {
             XCTFail("Unexpected nil")
             return
         }
-        XCTAssertEqual("HOGE\n", String(data: data, encoding: .utf8))
+        XCTAssertEqual("HOGE\nHOGE\n", String(data: data, encoding: .utf8))
     }
     
     func testFoutWithNilFileStream() {
-        try! FileManager.default.removeItem(atPath: testFilePath)
+        removeTestLogFile()
         Linna.fout("uuu")
         XCTAssertFalse(FileManager.default.fileExists(atPath: testFilePath))
+    }
+    
+    private func removeTestLogFile() {
+        let _ = try? FileManager.default.removeItem(atPath: testFilePath)
     }
     
 }

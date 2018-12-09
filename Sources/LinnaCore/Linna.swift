@@ -33,15 +33,26 @@ public final class Linna {
     // MARK: - Methods
     
     /**
-     Set the format pattern for outputting logs.
+     Set the format pattern for log messages.
      
      - Parameters:
        - pattern: The format pattern to set.
      */
-    public static func setPattern(with pattern: String) {
+    public static func setFormatPattern(with pattern: String) {
         logBuilder = LogBuilder(
             logFormatter: CustomizableLogFormatter(pattern: pattern),
             dateFormatter: DefaultDateFormatter().formatter
         )
     }
+    
+    /**
+     Set the file output path.
+     
+     - Parameters:
+       - path: The path to output.
+     */
+    public static func setFileOutputPath(to path: String) {
+        localFileStream = LocalFileStream(filePath: path)
+    }
+    
 }
