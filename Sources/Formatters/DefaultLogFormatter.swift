@@ -10,7 +10,12 @@
  The default log formatter for Linna.
  */
 class DefaultLogFormatter: LogFormatter {
+    
+    // MARK: - Constants
+    
     private static let pattern = "%d [%level] [%file::%func:%line] %obj"
+    
+    // MARK: - Methods
     
     func format(from contents: LogContents) -> String? {
         return format(from: contents, with: DefaultLogFormatter.pattern)

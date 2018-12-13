@@ -13,11 +13,20 @@ class LogBuilder {
     
     // MARK: - Properties
     
+    /// A log formatter to build log messages.
     let logFormatter: LogFormatter
+    /// A date formatter to build formatted date strings.
     let dateFormatter: DateFormatter
     
     // MARK: - Lifecycle
     
+    /**
+     Initializer.
+     
+     - Parameters:
+       - logFormatter: The formatter to build log messages.
+       - dateFormatter: The formatter to build formatted date strings.
+     */
     init(logFormatter: LogFormatter, dateFormatter: DateFormatter) {
         self.logFormatter = logFormatter
         self.dateFormatter = dateFormatter

@@ -130,7 +130,6 @@
 				6B374379219C0CA9001493A1 /* Structs */,
 				6B3743462199AAE1001493A1 /* Linna.h */,
 				6B3743472199AAE1001493A1 /* Info.plist */,
-				6B3743752199B36C001493A1 /* LogBuilder.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -143,7 +142,6 @@
 				6B6CB24121BD383A00F86A0E /* LinnaCore */,
 				6B6CB23521BC03D400F86A0E /* Streams */,
 				6B3743532199AAE2001493A1 /* Info.plist */,
-				6B374377219B2767001493A1 /* LogBuilderTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -160,10 +158,10 @@
 		6B37437D219C1939001493A1 /* Formatters */ = {
 			isa = PBXGroup;
 			children = (
-				6B37437E219C194F001493A1 /* LogFormatter.swift */,
-				6B374382219C1E63001493A1 /* DefaultLogFormatter.swift */,
 				6B8099E1219D8D8B005D44BC /* CustomizableLogFormatter.swift */,
+				6B374382219C1E63001493A1 /* DefaultLogFormatter.swift */,
 				6B865D1921B1807C00C43AAF /* FormatPatternValidator.swift */,
+				6B37437E219C194F001493A1 /* LogFormatter.swift */,
 			);
 			path = Formatters;
 			sourceTree = "<group>";
@@ -171,9 +169,9 @@
 		6B374384219C2592001493A1 /* Formatter */ = {
 			isa = PBXGroup;
 			children = (
-				6B374385219C25B3001493A1 /* LogFormatterTests.swift */,
 				6B8099E3219D9051005D44BC /* CustomizableLogFormatterTests.swift */,
 				6B865D2121B18FB100C43AAF /* FormatPatternValidatorTests.swift */,
+				6B374385219C25B3001493A1 /* LogFormatterTests.swift */,
 			);
 			path = Formatter;
 			sourceTree = "<group>";
@@ -203,6 +201,7 @@
 				6B6CB23E21BD365500F86A0E /* Linna+InternalPrint.swift */,
 				6B37436F2199AF2E001493A1 /* Linna+LogLevel.swift */,
 				6B3743732199B2FA001493A1 /* Linna+Outputs.swift */,
+				6B3743752199B36C001493A1 /* LogBuilder.swift */,
 			);
 			path = LinnaCore;
 			sourceTree = "<group>";
@@ -213,6 +212,7 @@
 				6B3743512199AAE2001493A1 /* LinnaTests.swift */,
 				6B3743712199B179001493A1 /* Linna+LogLevelTests.swift */,
 				6B374387219C2DFF001493A1 /* Linna+OutputsTests.swift */,
+				6B374377219B2767001493A1 /* LogBuilderTests.swift */,
 			);
 			path = LinnaCore;
 			sourceTree = "<group>";
