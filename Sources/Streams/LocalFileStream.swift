@@ -15,6 +15,7 @@ class LocalFileStream: LinnaStream {
     
     // MARK: - Properties
     
+    /// The path to output the log file.
     let outputPath: URL
     
     // MARK: - Lifecycles
@@ -38,6 +39,7 @@ class LocalFileStream: LinnaStream {
     
     // MARK: - Methods
     
+    // (Inherit doc.)
     func out(message: String) {
         do {
             let fileHandle = try FileHandle(forWritingTo: outputPath)

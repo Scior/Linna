@@ -23,11 +23,11 @@ extension Linna {
      Outputs a log message to the console.
      
      - Parameters:
-     - objects: Main contents for logging.
-     - streams: The set of output streams.
-     - filePath: The file path from which this method is called. Given by default.
-     - functionName: The function name from which this method is called. Given by default.
-     - lineNumber: The number of line from which this method is called. Given by default.
+       - objects: Main contents for logging.
+       - streams: The set of output streams.
+       - filePath: The file path from which this method is called. Given by default.
+       - functionName: The function name from which this method is called. Given by default.
+       - lineNumber: The number of line from which this method is called. Given by default.
      */
     public static func out(_ objects: Any..., with streams: Set<OutputStream>? = nil, filePath: String = #file, functionName: String = #function, lineNumber: Int = #line) {
         guard let message = buildLogMessage(
@@ -101,6 +101,9 @@ extension Linna {
        - filePath: The file path from which this method is called. Given by default.
        - functionName: The function name from which this method is called. Given by default.
        - lineNumber: The number of line from which this method is called. Given by default.
+     
+     - Returns:
+       - The combined log message.
      */
     private static func buildLogMessage(_ objects: [Any], filePath: String = #file, functionName: String = #function, lineNumber: Int = #line) -> String? {
         // TODO: Make settable
@@ -115,6 +118,11 @@ extension Linna {
 }
 
 fileprivate extension String {
+    /**
+     Extracts the file name from the full path.
+     
+     - Returns: The file name.
+     */
     func getFileName() -> String {
         guard let subSequence = self.split(separator: "/").last else { return "" }
         return String(subSequence)

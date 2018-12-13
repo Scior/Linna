@@ -17,6 +17,7 @@ class DefaultLogFormatter: LogFormatter {
     
     // MARK: - Methods
     
+    // (Inherit doc.)
     func format(from contents: LogContents) -> String? {
         return format(from: contents, with: DefaultLogFormatter.pattern)
     }

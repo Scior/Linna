@@ -10,6 +10,7 @@
  The output stream for the console.
  */
 class ConsoleStream: LinnaStream {
+    // (Inherit doc.)
     func out(message: String) {
         print(message)
     }

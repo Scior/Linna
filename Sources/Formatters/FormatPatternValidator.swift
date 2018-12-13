@@ -15,7 +15,7 @@ class FormatPatternValidator {
     
     // MARK: - Properties
     
-    let reservedParameters = ["%d", "%obj", "%level", "%file", "%func", "%line"]
+    private let reservedParameters = ["%d", "%obj", "%level", "%file", "%func", "%line"]
     
     // MARK: - Methods
     

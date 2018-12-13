@@ -13,6 +13,7 @@ class CustomizableLogFormatter: LogFormatter {
 
     // MARK: - Properties
     
+    // (Inherit doc.)
     let pattern: String
     
     // MARK: - Lifecycle
@@ -29,6 +30,7 @@ class CustomizableLogFormatter: LogFormatter {
     
     // MARK: - Methods
     
+    // (Inherit doc.)
     func format(from contents: LogContents) -> String? {
         return format(from: contents, with: pattern)
     }
