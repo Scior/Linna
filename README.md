@@ -1,6 +1,6 @@
 # Linna
 
-[![version](https://img.shields.io/badge/version-alpha-lightgrey.svg)](https://github.com/Scior/Linna)
+[![version](https://img.shields.io/badge/version-0.1.0-blue.svg)](https://github.com/Scior/Linna)
 [![Build Status](https://travis-ci.org/Scior/Linna.svg?branch=master)](https://travis-ci.org/Scior/Linna)
 [![Swift: 4.2](https://img.shields.io/badge/Swift-4.2-green.svg)](https://swift.org/)
 [![Carthage](https://img.shields.io/badge/Carthage-compatible-green.svg)](https://github.com/Carthage/Carthage)
