@@ -14,6 +14,7 @@
 - [What's this?](#whats-this)
 - [Installation](#installation)
 - [Usage](#usage)
+- [Sample](#sample)
 - [License](#license)
 
 ## What's this?
@@ -109,6 +110,10 @@ Linna.outputStreams = [.console]
 // Console and file
 Linna.outputStreams = [.console, .file]
 ```
+
+## Sample
+
+The sample app for **Linna** is found in [LinnaSampleApp](https://github.com/Scior/Linna/tree/master/LinnaSampleApp).
 
 ## License
 
