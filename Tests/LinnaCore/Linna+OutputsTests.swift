@@ -86,6 +86,7 @@ class LinnaOutputsTests: XCTestCase {
     
     func testFoutWithNilFileStream() {
         removeTestLogFile()
+        Linna.localFileStream = nil
         Linna.fout("uuu")
         
         XCTAssertFalse(FileManager.default.fileExists(atPath: testFilePath))
