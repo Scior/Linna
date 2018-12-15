@@ -13,7 +13,7 @@ struct Caller {
     
     // MARK: - Properties
 
-    let fileName: String
+    let filePath: String
     let functionName: String
     let lineNumber: Int
     
