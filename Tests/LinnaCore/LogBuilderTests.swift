@@ -28,7 +28,7 @@ class LogBuilderTests: XCTestCase {
             level: .info,
             tags: testTags,
             caller: Caller(
-                fileName: testFileName,
+                filePath: testFileName,
                 functionName: testFunction,
                 lineNumber: testLine)
         ) else {

@@ -13,7 +13,7 @@ extension Linna {
     /**
      Default log levels.
      */
-    enum LogLevel: String, Codable {
+    public enum LogLevel: String, Codable {
         case info, warning, error
         
         func outputName() -> String {

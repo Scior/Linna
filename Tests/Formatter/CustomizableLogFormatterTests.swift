@@ -16,13 +16,13 @@ class CustomizableLogFormatterTests: XCTestCase {
         date: "1234-11-22 xx:xx:xx",
         level: .info,
         objects: ["XAXA", "BBXX"],
-        caller: Caller(fileName: "HogeFile", functionName: "HogeFunc", lineNumber: 3_333)
+        caller: Caller(filePath: "HogeFile", functionName: "HogeFunc", lineNumber: 3_333)
     )
 
     func testFormat() {
         XCTAssertEqual(
             formatter.format(from: contents),
-            "\(contents.date) XAXA BBXX <\(contents.level.outputName())> #\(contents.caller.fileName):\(contents.caller.functionName):\(contents.caller.lineNumber)#"
+            "\(contents.date) XAXA BBXX <\(contents.level.outputName())> #\(contents.caller.filePath):\(contents.caller.functionName):\(contents.caller.lineNumber)#"
         )
     }
 

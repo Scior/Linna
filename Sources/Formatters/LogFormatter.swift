@@ -44,7 +44,7 @@ extension LogFormatter {
             .replaceSafely(of: "%d", with: contents.date)
             .replaceSafely(of: "%obj", with: contents.objects.map({ "\($0)" }).joined(separator: " "))
             .replaceSafely(of: "%level", with: contents.level.outputName())
-            .replaceSafely(of: "%file", with: contents.caller.fileName)
+            .replaceSafely(of: "%file", with: contents.caller.filePath.getFileName())
             .replaceSafely(of: "%func", with: contents.caller.functionName)
             .replaceSafely(of: "%line", with: String(contents.caller.lineNumber))
             .completeSafeReplacing()
@@ -62,5 +62,15 @@ fileprivate extension String {
     
     func completeSafeReplacing() -> String {
         return self.replacingOccurrences(of: "%%", with: "")
+    }
+
+    /**
+     Extracts the file name from the full path.
+     
+     - Returns: The file name.
+     */
+    func getFileName() -> String {
+        guard let subSequence = self.split(separator: "/").last else { return "" }
+        return String(subSequence)
     }
 }

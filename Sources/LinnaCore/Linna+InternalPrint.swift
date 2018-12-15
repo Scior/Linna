@@ -6,6 +6,9 @@
 //  Copyright © 2018 Suita Fujino. All rights reserved.
 //
 
+/**
+ The extension to support outputting internal event logs occured in Linna.
+ */
 extension Linna {
     
     internal static let prefixForInternalPrint = "[--Linna--] "
