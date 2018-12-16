@@ -17,41 +17,31 @@
 - [Sample](#sample)
 - [License](#license)
 
-README written in other languages:
-
-- [日本語(Japanese)](./README_ja.md)
-
 ## What's this?
 
-**Linna** is a simple customizable logger for iOS, fully compatible with Swift.  
-
-### Feature
-
-- Simple interface.
-- Customizable formats.
-- Support file output.
+**Linna**は、Swift製のシンプルなインターフェースを持つデバッグロガーです。
 
 ## Installation
 
-### With Carthage
+### Carthageでのインストール
 
-- Add the following line to `Cartfile`.
+- `Cartfile`に以下の行を追加します。
 
 ```ruby
 github "Scior/Linna"
 ```
 
-- Run `carthage update`.
+- ルートディレクトリで、`carthage update`を実行します。
 
-- Add `Linna.framework` to your project.
+- プロジェクトに`Linna.framework`を追加します。
 
 ![Framework Installation](./docs/images/framework_installation.png)
 
 ## Usage
 
-### The simplest way
+### クイックスタート
 
-Import **Linna** and simply call the methods.
+**Linna**をインポートして、`static`メソッドを呼び出します。
 
 ```swift
 import Linna
@@ -62,24 +52,24 @@ func someFunc() {
 }
 ```
 
-The console output will be,
+出力は以下のようになります。
 
 ```text
 2018/12/01 03:25:03 [INFO] [xxx.swift::someFunc():5] Hello!
 ```
 
-### With a customized format
+### フォーマットをカスタマイズする
 
-Heres are replaced attributes.
+利用可能なパラメーターは以下のようになります。
 
-- `%d`: Replaced with a date string.
-- `%obj`: Replaced with objects.
-- `%level`: Replaced with a log level. (e.g. INFO, ERROR)
-- `%file`: Replaced with a file name.
-- `%func`: Replaced with a function name.
-- `%line`: Replaced with a line number.
+- `%d`: 日時
+- `%obj`: オブジェクト
+- `%level`: INFO, ERRORなどのログレベル
+- `%file`: ファイル名
+- `%func`: メソッド名
+- `%line`: 行番号
 
-A format pattern must be set before calling output methods.
+フォーマットパターンは、以下のメソッドでセットします。
 
 ```swift
 Linna.setFormatPattern(with: "%d %obj <%level> #%file:%func:%line#")
@@ -88,31 +78,32 @@ Linna.out("Hello!")
 
 ### File output
 
-To output the log file,
+ファイル出力をする際は、パスを指定します。
 
 ```swift
 Linna.setFileOutputPath(to: "tmp/hogetaro")
 Linna.out("Bye!")
 ```
 
-then, a new log file will be created if it doesn't exist, and the log message will be appended to the file.
+ファイルがすでに存在する場合は、追記されます。
 
 ### Separate the output explicitly
 
-To output solely to the debug console,
+コンソール出力のみしたい場合は、
 
 ```swift
 Linna.cout("Console only")
 ```
 
-or to output solely to the file,
+もしくは、ファイル出力のみしたい場合は、
 
 ```swift
 Linna.setFileOutputPath(to: "tmp/hogejiro")
 Linna.fout("File only")
 ```
 
-Otherwise, you can define the default stream to output through `Linna` class.
+のように、明示的なメソッドも用意されています。  
+標準の出力ストリームは、以下のようにセットできます。
 
 ```swift
 // Console only
@@ -123,10 +114,10 @@ Linna.outputStreams = [.console, .file]
 
 ## Sample
 
-The sample app for **Linna** is found in [LinnaSampleApp](https://github.com/Scior/Linna/tree/master/LinnaSampleApp).
+サンプルアプリはこちらにあります。 [LinnaSampleApp](https://github.com/Scior/Linna/tree/master/LinnaSampleApp).
 
 ## License
 
-**Linna** is under MIT License.
+**Linna**は、MIT Licenseで提供しています。
 
 Copyright (c) 2018 Suita Fujino  
