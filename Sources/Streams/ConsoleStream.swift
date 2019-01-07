@@ -9,9 +9,9 @@
 /**
  The output stream for the console.
  */
-class ConsoleStream: LinnaStream {
+public class ConsoleStream: LinnaStream {
     // (Inherit doc.)
-    func out(message: String) {
+    public func out(message: String) {
         print(message)
     }
 }

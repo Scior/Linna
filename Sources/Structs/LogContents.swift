@@ -9,7 +9,7 @@
 /**
  Contents for the log output.
  */
-struct LogContents {
+public struct LogContents {
     
     // MARK: - Properties
     

@@ -11,12 +11,12 @@ import Foundation
 /**
  The output stream for the local file.
  */
-class LocalFileStream: LinnaStream {
+public final class LocalFileStream: LinnaStream {
     
     // MARK: - Properties
     
     /// The path to output the log file.
-    let outputPath: URL
+    public let outputPath: URL
     
     // MARK: - Lifecycles
     
@@ -26,7 +26,7 @@ class LocalFileStream: LinnaStream {
      - Parameters:
        - filePath: The file path appended to the output directory.
      */
-    init?(filePath: String) {
+    public init?(filePath: String) {
         outputPath = URL(fileURLWithPath: FileManager.default.currentDirectoryPath).appendingPathComponent(filePath)
         if !FileManager.default.fileExists(atPath: filePath) {
             if (try? "".write(to: outputPath, atomically: false, encoding: .utf8)) == nil { return nil }
@@ -40,7 +40,7 @@ class LocalFileStream: LinnaStream {
     // MARK: - Methods
     
     // (Inherit doc.)
-    func out(message: String) {
+    public func out(message: String) {
         do {
             let fileHandle = try FileHandle(forWritingTo: outputPath)
             fileHandle.seekToEndOfFile()

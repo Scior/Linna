@@ -9,14 +9,14 @@
 /**
  The class for building a log string.
  */
-class LogBuilder {
+public class LogBuilder {
     
     // MARK: - Properties
     
     /// A log formatter to build log messages.
-    let logFormatter: LogFormatter
+    public let logFormatter: LogFormatter
     /// A date formatter to build formatted date strings.
-    let dateFormatter: DateFormatter
+    public let dateFormatter: DateFormatter
     
     // MARK: - Lifecycle
     
@@ -27,7 +27,7 @@ class LogBuilder {
        - logFormatter: The formatter to build log messages.
        - dateFormatter: The formatter to build formatted date strings.
      */
-    init(logFormatter: LogFormatter, dateFormatter: DateFormatter) {
+    public init(logFormatter: LogFormatter, dateFormatter: DateFormatter) {
         self.logFormatter = logFormatter
         self.dateFormatter = dateFormatter
     }

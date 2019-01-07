@@ -9,8 +9,8 @@
 /**
  A date formatter used by default.
  */
-class DefaultDateFormatter: LinnaDateFormatter {
-    let formatter: DateFormatter = {
+public class DefaultDateFormatter: LinnaDateFormatter {
+    public let formatter: DateFormatter = {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy/MM/dd HH:mm:ss"
         

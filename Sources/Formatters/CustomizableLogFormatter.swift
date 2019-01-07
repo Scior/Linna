@@ -9,12 +9,12 @@
 /**
  Log formatter with a customizable format.
  */
-class CustomizableLogFormatter: LogFormatter {
+public final class CustomizableLogFormatter: LogFormatter {
 
     // MARK: - Properties
     
     // (Inherit doc.)
-    let pattern: String
+    public let pattern: String
     
     // MARK: - Lifecycle
     
@@ -24,14 +24,14 @@ class CustomizableLogFormatter: LogFormatter {
      - Parameters:
        - pattern: Log format pattern. See `LogFormatter.format`.
      */
-    init(pattern: String) {
+    public init(pattern: String) {
         self.pattern = pattern
     }
     
     // MARK: - Methods
     
     // (Inherit doc.)
-    func format(from contents: LogContents) -> String? {
+    public func format(from contents: LogContents) -> String? {
         return format(from: contents, with: pattern)
     }
 

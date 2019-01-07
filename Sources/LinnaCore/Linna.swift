@@ -14,15 +14,15 @@ public final class Linna {
     // MARK: - Properties
     
     /// The shared instance of `LogBuilder`, which constructs the log outputs.
-    static var logBuilder = LogBuilder(
+    public static var logBuilder = LogBuilder(
         logFormatter: DefaultLogFormatter(),
         dateFormatter: DefaultDateFormatter().formatter
     )
 
     /// The stream for console outputs.
-    static var consoleStream: LinnaStream = ConsoleStream()
+    public static var consoleStream: LinnaStream = ConsoleStream()
     /// The stream for file outputs.
-    static var localFileStream: LinnaStream?
+    public static var localFileStream: LinnaStream?
     /// The streams in use.
     static var outputStreams: Set<OutputStream> = [.console, .file]
     

@@ -9,7 +9,7 @@
 /**
  The formatter to construct log.
  */
-protocol LogFormatter {
+public protocol LogFormatter {
     /**
      Constructs formatted string from `LogContents`.
      

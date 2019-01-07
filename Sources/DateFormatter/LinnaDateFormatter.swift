@@ -9,7 +9,7 @@
 /**
  A protocol for the date formatter.
  */
-protocol LinnaDateFormatter {
+public protocol LinnaDateFormatter {
     /// The instance used by the log formatter.
     var formatter: DateFormatter { get }
 }
