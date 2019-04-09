@@ -30,7 +30,7 @@ extension Linna {
        - functionName: The function name from which this method is called. Given by default.
        - lineNumber: The number of line from which this method is called. Given by default.
      */
-    public static func out(_ objects: Any..., level: LogLevel = .info, with streams: Set<OutputStream>? = nil, filePath: String = #file, functionName: String = #function, lineNumber: Int = #line) {
+    public func out(_ objects: Any..., level: LogLevel = .info, with streams: Set<OutputStream>? = nil, filePath: String = #file, functionName: String = #function, lineNumber: Int = #line) {
         let caller = Caller(filePath: filePath, functionName: functionName, lineNumber: lineNumber)
         guard let message = buildLogMessage(objects, level: level, caller: caller) else { return }
         
@@ -53,7 +53,7 @@ extension Linna {
        - functionName: The function name from which this method is called. Given by default.
        - lineNumber: The number of line from which this method is called. Given by default.
      */
-    public static func cout(_ objects: Any..., level: LogLevel = .info, filePath: String = #file, functionName: String = #function, lineNumber: Int = #line) {
+    public func cout(_ objects: Any..., level: LogLevel = .info, filePath: String = #file, functionName: String = #function, lineNumber: Int = #line) {
         let caller = Caller(filePath: filePath, functionName: functionName, lineNumber: lineNumber)
         guard let message = buildLogMessage(objects, level: level, caller: caller) else { return }
         
@@ -69,7 +69,7 @@ extension Linna {
        - functionName: The function name from which this method is called. Given by default.
        - lineNumber: The number of line from which this method is called. Given by default.
      */
-    public static func fout(_ objects: Any..., level: LogLevel = .info, filePath: String = #file, functionName: String = #function, lineNumber: Int = #line) {
+    public func fout(_ objects: Any..., level: LogLevel = .info, filePath: String = #file, functionName: String = #function, lineNumber: Int = #line) {
         #if DEBUG
         if let localFileStream = localFileStream {
             let caller = Caller(filePath: filePath, functionName: functionName, lineNumber: lineNumber)
@@ -77,7 +77,7 @@ extension Linna {
             
             localFileStream.out(message: message)
         } else {
-            iPrint(message: "File stream is not ready. Log messages for the file stream will be discarded.")
+            Linna.iPrint(message: "File stream is not ready. Log messages for the file stream will be discarded.")
         }
         #endif
     }
@@ -93,7 +93,7 @@ extension Linna {
      - Returns:
        - The combined log message.
      */
-    private static func buildLogMessage(_ objects: [Any], level: LogLevel, caller: Caller) -> String? {
+    private func buildLogMessage(_ objects: [Any], level: LogLevel, caller: Caller) -> String? {
         return logBuilder.build(
             objects: objects,
             level: level,

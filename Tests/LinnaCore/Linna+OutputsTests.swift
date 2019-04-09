@@ -14,6 +14,8 @@ class LinnaOutputsTests: XCTestCase {
     private let testFilePath = "hogetaro"
     private static let testMessage = "HOGEmessage1001"
     
+    private var linna = Linna()
+    
     class LogBuilderMock: LogBuilder {
         override func build(objects: [Any], level: Linna.LogLevel, tags: [String], caller: Caller) -> String {
             return LinnaOutputsTests.testMessage
@@ -35,27 +37,28 @@ class LinnaOutputsTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
-        // NOTE: To show the default output, comment out the following line.
-        Linna.logBuilder = LogBuilderMock(
+        
+        linna = Linna()
+        linna.logBuilder = LogBuilderMock(
             logFormatter: DefaultLogFormatter(),
             dateFormatter: DefaultDateFormatter().formatter
         )
-        Linna.consoleStream = ConsoleStreamMock()
+        linna.consoleStream = ConsoleStreamMock()
     }
     
     func testOut() {
         removeTestLogFile()
-        Linna.localFileStream = localFileStreamMock
+        linna.localFileStream = localFileStreamMock
         
-        Linna.out("aaa")
-        Linna.out("uuu")
+        linna.out("aaa")
+        linna.out("uuu")
         
         guard let data = FileManager.default.contents(atPath: testFilePath) else {
             XCTFail("Unexpected nil")
             return
         }
         
-        XCTAssertEqual(LinnaOutputsTests.testMessage, (Linna.consoleStream as? ConsoleStreamMock)?.outputResult)
+        XCTAssertEqual(LinnaOutputsTests.testMessage, (linna.consoleStream as? ConsoleStreamMock)?.outputResult)
         XCTAssertEqual(
             "\(LinnaOutputsTests.testMessage)\n\(LinnaOutputsTests.testMessage)\n",
             String(data: data, encoding: .utf8)
@@ -63,16 +66,16 @@ class LinnaOutputsTests: XCTestCase {
     }
 
     func testCout() {
-        Linna.cout("aaa")
+        linna.cout("aaa")
         
-        XCTAssertEqual(LinnaOutputsTests.testMessage, (Linna.consoleStream as? ConsoleStreamMock)?.outputResult)
+        XCTAssertEqual(LinnaOutputsTests.testMessage, (linna.consoleStream as? ConsoleStreamMock)?.outputResult)
     }
     
     func testFout() {
         removeTestLogFile()
-        Linna.localFileStream = localFileStreamMock
-        Linna.fout("uuu")
-        Linna.fout("uuu")
+        linna.localFileStream = localFileStreamMock
+        linna.fout("uuu")
+        linna.fout("uuu")
         guard let data = FileManager.default.contents(atPath: testFilePath) else {
             XCTFail("Unexpected nil")
             return
@@ -86,8 +89,8 @@ class LinnaOutputsTests: XCTestCase {
     
     func testFoutWithNilFileStream() {
         removeTestLogFile()
-        Linna.localFileStream = nil
-        Linna.fout("uuu")
+        linna.localFileStream = nil
+        linna.fout("uuu")
         
         XCTAssertFalse(FileManager.default.fileExists(atPath: testFilePath))
     }

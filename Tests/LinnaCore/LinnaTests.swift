@@ -14,14 +14,16 @@ class LinnaTests: XCTestCase {
     private let testPattern = "%d HOGE Fuga"
     private let testFilePath = "hoge1234"
     
+    private let linna = Linna()
+    
     func testSetPattern() {
-        Linna.setFormatPattern(with: testPattern)
-        XCTAssertEqual(testPattern, (Linna.logBuilder.logFormatter as? CustomizableLogFormatter)?.pattern)
+        linna.setFormatPattern(with: testPattern)
+        XCTAssertEqual(testPattern, (linna.logBuilder.logFormatter as? CustomizableLogFormatter)?.pattern)
     }
     
     func testSetFileOutputPath() {
-        Linna.setFileOutputPath(to: testFilePath)
-        guard let stream = Linna.localFileStream as? LocalFileStream else {
+        linna.setFileOutputPath(to: testFilePath)
+        guard let stream = linna.localFileStream as? LocalFileStream else {
             XCTFail("Unexpected nil")
             return
         }
