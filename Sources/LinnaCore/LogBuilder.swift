@@ -9,12 +9,18 @@
 /**
  The class for building a log string.
  */
-class LogBuilder {
+public class LogBuilder {
     
     // MARK: - Properties
     
+    /// The static instance of the default log builder.
+    public static let `default` = LogBuilder(
+        logFormatter: DefaultLogFormatter(),
+        dateFormatter: DefaultDateFormatter().formatter
+    )
+    
     /// A log formatter to build log messages.
-    let logFormatter: LogFormatter
+    private(set) var logFormatter: LogFormatter
     /// A date formatter to build formatted date strings.
     let dateFormatter: DateFormatter
     
@@ -45,5 +51,15 @@ class LogBuilder {
         let dateTime = dateFormatter.string(from: Date())
         
         return logFormatter.format(from: LogContents(date: dateTime, level: level, objects: objects, caller: caller))
+    }
+    
+    /**
+     Sets new log formatter with the given pattern.
+     
+     - Parameters:
+       - pattern: The format pattern to set.
+    */
+    func setFormatPattern(with pattern: String) {
+        logFormatter = CustomizableLogFormatter(pattern: pattern)
     }
 }
