@@ -6,7 +6,10 @@
 //  Copyright © 2018 Suita Fujino. All rights reserved.
 //
 
+import Linna
 import UIKit
+
+let linna = Linna()
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

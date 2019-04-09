@@ -58,7 +58,7 @@ import Linna
 
 func someFunc() {
     // Sample for the console output with the default format
-    Linna.out("Hello!")
+    Linna.shared.out("Hello!")
 }
 ```
 
@@ -66,6 +66,17 @@ The console output will be,
 
 ```text
 2018/12/01 03:25:03 [INFO] [xxx.swift::someFunc():5] Hello!
+```
+
+### Import once
+
+If you don't want to `import` in each file, hold instance in `AppDelegate.swift` or some global file .
+
+```swift
+let linna = Linna() // here
+
+@UIApplicationMain
+class AppDelegate: UIResponder, UIApplicationDelegate {
 ```
 
 ### With a customized format
@@ -82,8 +93,8 @@ Heres are replaced attributes.
 A format pattern must be set before calling output methods.
 
 ```swift
-Linna.setFormatPattern(with: "%d %obj <%level> #%file:%func:%line#")
-Linna.out("Hello!")
+linna.setFormatPattern(with: "%d %obj <%level> #%file:%func:%line#")
+linna.out("Hello!")
 ```
 
 ### File output
@@ -91,8 +102,8 @@ Linna.out("Hello!")
 To output the log file,
 
 ```swift
-Linna.setFileOutputPath(to: "tmp/hogetaro")
-Linna.out("Bye!")
+linna.setFileOutputPath(to: "tmp/hogetaro")
+linna.out("Bye!")
 ```
 
 then, a new log file will be created if it doesn't exist, and the log message will be appended to the file.
@@ -108,17 +119,17 @@ Linna.cout("Console only")
 or to output solely to the file,
 
 ```swift
-Linna.setFileOutputPath(to: "tmp/hogejiro")
-Linna.fout("File only")
+linna.setFileOutputPath(to: "tmp/hogejiro")
+linna.fout("File only")
 ```
 
 Otherwise, you can define the default stream to output through `Linna` class.
 
 ```swift
 // Console only
-Linna.outputStreams = [.console]
+linna.outputStreams = [.console]
 // Console and file
-Linna.outputStreams = [.console, .file]
+linna.outputStreams = [.console, .file]
 ```
 
 ## Sample
