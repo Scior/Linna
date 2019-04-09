@@ -16,11 +16,8 @@ public final class Linna {
     /// The shared instance of `Linna`.
     public static let shared = Linna()
     
-    /// The shared instance of `LogBuilder`, which constructs the log outputs.
-    var logBuilder = LogBuilder(
-        logFormatter: DefaultLogFormatter(),
-        dateFormatter: DefaultDateFormatter().formatter
-    )
+    /// The instance of `LogBuilder`, which constructs the log outputs.
+    public let logBuilder: LogBuilder
 
     /// The stream for console outputs.
     public var consoleStream: LinnaStream = ConsoleStream()
@@ -31,6 +28,13 @@ public final class Linna {
     
     // MARK: - Lifecycle
     
+    /**
+     Initializer.
+    */
+    public init(logBuilder: LogBuilder = LogBuilder.default) {
+        self.logBuilder = logBuilder
+    }
+    
     // MARK: - Methods
     
     /**
@@ -40,10 +44,7 @@ public final class Linna {
        - pattern: The format pattern to set.
      */
     public func setFormatPattern(with pattern: String) {
-        logBuilder = LogBuilder(
-            logFormatter: CustomizableLogFormatter(pattern: pattern),
-            dateFormatter: DefaultDateFormatter().formatter
-        )
+        logBuilder.setFormatPattern(with: pattern)
     }
     
     /**

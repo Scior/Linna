@@ -38,11 +38,10 @@ class LinnaOutputsTests: XCTestCase {
     override func setUp() {
         super.setUp()
         
-        linna = Linna()
-        linna.logBuilder = LogBuilderMock(
+        linna = Linna(logBuilder: LogBuilderMock(
             logFormatter: DefaultLogFormatter(),
             dateFormatter: DefaultDateFormatter().formatter
-        )
+        ))
         linna.consoleStream = ConsoleStreamMock()
     }
     
