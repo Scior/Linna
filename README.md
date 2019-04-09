@@ -1,8 +1,8 @@
 # Linna
 
-[![version](https://img.shields.io/badge/version-0.1.0-blue.svg)](https://github.com/Scior/Linna)
+[![version](https://img.shields.io/badge/version-0.2.0-blue.svg)](https://github.com/Scior/Linna)
 [![Build Status](https://travis-ci.org/Scior/Linna.svg?branch=master)](https://travis-ci.org/Scior/Linna)
-[![Swift: 4.2](https://img.shields.io/badge/Swift-4.2-green.svg)](https://swift.org/)
+[![Swift: 5.0](https://img.shields.io/badge/Swift-5.0-green.svg)](https://swift.org/)
 [![Carthage](https://img.shields.io/badge/Carthage-compatible-green.svg)](https://github.com/Carthage/Carthage)
 [![Coverage Status](https://coveralls.io/repos/github/Scior/Linna/badge.svg)](https://coveralls.io/github/Scior/Linna)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -44,8 +44,6 @@ github "Scior/Linna"
 - Run `carthage update`.
 
 - Add `Linna.framework` to your project.
-
-![Framework Installation](./docs/images/framework_installation.png)
 
 ## Usage
 
