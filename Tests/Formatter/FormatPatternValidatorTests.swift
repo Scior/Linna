@@ -24,16 +24,34 @@ class FormatPatternValidatorTests: XCTestCase {
     func testValidateShouldFailWithInvalidParamName() {
         let pattern = "%d %hoge aaa"
         let actual = validator.validate(for: pattern)
-        if let _ = try? actual.get() {
+        switch actual {
+        case .success:
             XCTFail("Validation passed")
+        case .failure(let error):
+            XCTAssert(error.localizedDescription.contains("parameter"))
+            switch error {
+            case .illegalParameter:
+                break
+            default:
+                XCTFail("Error not matched")
+            }
         }
     }
     
-    func testValidateShouldFailWithInvalidCharacter() {
+    func testValidateShouldFailWithInvalidCharacters() {
         let pattern = "%d %%aaa"
         let actual = validator.validate(for: pattern)
-        if let _ = try? actual.get() {
+        switch actual {
+        case .success:
             XCTFail("Validation passed")
+        case .failure(let error):
+            XCTAssert(error.localizedDescription.contains("characters"))
+            switch error {
+            case .illegalCharacters(let characters):
+                XCTAssertEqual(characters, "%%")
+            default:
+                XCTFail("Error not matched")
+            }
         }
     }
 
