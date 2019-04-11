@@ -11,10 +11,11 @@
  */
 class FormatPatternValidator {
     
-    public typealias ValidationResult = Result<Void, String>
+    public typealias ValidationResult = Result<Void, VaridationError>
     
     // MARK: - Properties
     
+    private let illegalCharactersList: [String] = ["%%"]
     private let reservedParameters = ["%d", "%obj", "%level", "%file", "%func", "%line"]
     
     // MARK: - Methods
@@ -27,9 +28,9 @@ class FormatPatternValidator {
      
      - Returns: `Result` with `Void` and the error message.
      */
-    func validate(for pattern: String) -> Result<Void, String> {
-        if pattern.contains("%%") {
-            return .error(buildErrorMessage(characters: "%%"))
+    func validate(for pattern: String) -> ValidationResult {
+        if let match = illegalCharactersList.filter({ pattern.contains($0)}).first {
+            return .failure(.illegalCharacters(match))
         }
         
         var result = pattern
@@ -37,14 +38,31 @@ class FormatPatternValidator {
             result = result.replacingOccurrences(of: param, with: "A$")
         }
         if result.contains("%") {
-            // TODO: Specify the parameter
-            return .error("Illegal parameter found.")
+            return .failure(.illegalParameter)
         }
         
-        return .ok(())
+        return .success(())
     }
     
-    private func buildErrorMessage(characters: String) -> String {
-        return "Illegal characters \(characters) found."
+}
+
+extension FormatPatternValidator {
+    /// Represents format validation errors.
+    enum VaridationError: Error {
+        /// Contains illegal placeholder parameter.
+        case illegalParameter
+        /// Contains unconvertable characters like '%%'.
+        case illegalCharacters(String)
+        
+        var localizedDescription: String {
+            switch self {
+            case .illegalParameter:
+                return "Illegal parameter found."
+            case .illegalCharacters(let characters):
+                return "Illegal characters \(characters) found."
+            }
+        }
     }
 }
+
+
