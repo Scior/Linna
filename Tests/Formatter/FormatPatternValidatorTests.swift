@@ -16,19 +16,43 @@ class FormatPatternValidatorTests: XCTestCase {
     func testValidateShouldSuccess() {
         let pattern = "%d %obj <%level> #%file:%func:%line#"
         let actual = validator.validate(for: pattern)
-        XCTAssertTrue(actual.isOk())
+        guard let _ = try? actual.get() else {
+            return XCTFail("Validation failed")
+        }
     }
     
     func testValidateShouldFailWithInvalidParamName() {
         let pattern = "%d %hoge aaa"
         let actual = validator.validate(for: pattern)
-        XCTAssertTrue(actual.isError())
+        switch actual {
+        case .success:
+            XCTFail("Validation passed")
+        case .failure(let error):
+            XCTAssert(error.localizedDescription.contains("parameter"))
+            switch error {
+            case .illegalParameter:
+                break
+            default:
+                XCTFail("Error not matched")
+            }
+        }
     }
     
-    func testValidateShouldFailWithInvalidCharacter() {
+    func testValidateShouldFailWithInvalidCharacters() {
         let pattern = "%d %%aaa"
         let actual = validator.validate(for: pattern)
-        XCTAssertTrue(actual.isError())
+        switch actual {
+        case .success:
+            XCTFail("Validation passed")
+        case .failure(let error):
+            XCTAssert(error.localizedDescription.contains("characters"))
+            switch error {
+            case .illegalCharacters(let characters):
+                XCTAssertEqual(characters, "%%")
+            default:
+                XCTFail("Error not matched")
+            }
+        }
     }
 
 }
