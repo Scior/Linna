@@ -29,7 +29,7 @@ class FormatPatternValidator {
      - Returns: `Result` with `Void` and the error message.
      */
     func validate(for pattern: String) -> ValidationResult {
-        if let match = illegalCharactersList.filter({ pattern.contains($0) }).first {
+        if let match = illegalCharactersList.first(where: { pattern.contains($0) }) {
             return .failure(.illegalCharacters(match))
         }
         
