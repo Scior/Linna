@@ -30,7 +30,6 @@
 		6B8099E2219D8D8C005D44BC /* CustomizableLogFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8099E1219D8D8B005D44BC /* CustomizableLogFormatter.swift */; };
 		6B8099E4219D9051005D44BC /* CustomizableLogFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8099E3219D9051005D44BC /* CustomizableLogFormatterTests.swift */; };
 		6B865D1A21B1807C00C43AAF /* FormatPatternValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B865D1921B1807C00C43AAF /* FormatPatternValidator.swift */; };
-		6B865D2021B1837B00C43AAF /* ResultTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B865D1F21B1837B00C43AAF /* ResultTests.swift */; };
 		6B865D2221B18FB100C43AAF /* FormatPatternValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B865D2121B18FB100C43AAF /* FormatPatternValidatorTests.swift */; };
 		6B865D2521B1B1B000C43AAF /* DefaultDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B865D2421B1B1B000C43AAF /* DefaultDateFormatter.swift */; };
 		6B865D2721B1B20A00C43AAF /* LinnaDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B865D2621B1B20A00C43AAF /* LinnaDateFormatter.swift */; };
@@ -73,7 +72,6 @@
 		6B8099E1219D8D8B005D44BC /* CustomizableLogFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizableLogFormatter.swift; sourceTree = "<group>"; };
 		6B8099E3219D9051005D44BC /* CustomizableLogFormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizableLogFormatterTests.swift; sourceTree = "<group>"; };
 		6B865D1921B1807C00C43AAF /* FormatPatternValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatPatternValidator.swift; sourceTree = "<group>"; };
-		6B865D1F21B1837B00C43AAF /* ResultTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultTests.swift; sourceTree = "<group>"; };
 		6B865D2121B18FB100C43AAF /* FormatPatternValidatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatPatternValidatorTests.swift; sourceTree = "<group>"; };
 		6B865D2421B1B1B000C43AAF /* DefaultDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultDateFormatter.swift; sourceTree = "<group>"; };
 		6B865D2621B1B20A00C43AAF /* LinnaDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinnaDateFormatter.swift; sourceTree = "<group>"; };
@@ -232,7 +230,6 @@
 		6B865D1E21B1836400C43AAF /* Enums */ = {
 			isa = PBXGroup;
 			children = (
-				6B865D1F21B1837B00C43AAF /* ResultTests.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -408,7 +405,6 @@
 				6B865D2221B18FB100C43AAF /* FormatPatternValidatorTests.swift in Sources */,
 				6B374378219B2767001493A1 /* LogBuilderTests.swift in Sources */,
 				6B374386219C25B3001493A1 /* LogFormatterTests.swift in Sources */,
-				6B865D2021B1837B00C43AAF /* ResultTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
