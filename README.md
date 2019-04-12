@@ -1,6 +1,6 @@
 # Linna
 
-[![version](https://img.shields.io/badge/version-0.2.0-blue.svg)](https://github.com/Scior/Linna)
+[![version](https://img.shields.io/badge/version-0.2.1-blue.svg)](https://github.com/Scior/Linna)
 [![Build Status](https://travis-ci.org/Scior/Linna.svg?branch=master)](https://travis-ci.org/Scior/Linna)
 [![Swift: 5.0](https://img.shields.io/badge/Swift-5.0-green.svg)](https://swift.org/)
 [![Carthage](https://img.shields.io/badge/Carthage-compatible-green.svg)](https://github.com/Carthage/Carthage)
@@ -32,7 +32,7 @@ README written in other languages:
 - Simple interface.
 - Customizable formats.
 - Support file output.
-  - Files can be opened with terminal...
+  - Files can be opened with a terminal:)
 
 ## Installation
 
