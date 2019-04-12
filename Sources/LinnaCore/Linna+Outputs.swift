@@ -25,14 +25,15 @@ extension Linna {
      - Parameters:
        - objects: Main contents for logging.
        - level: The log level which describes severtiy.
+       - tags: Tags used to classify log.
        - streams: The set of output streams.
        - filePath: The file path from which this method is called. Given by default.
        - functionName: The function name from which this method is called. Given by default.
        - lineNumber: The number of line from which this method is called. Given by default.
      */
-    public func out(_ objects: Any..., level: LogLevel = .info, with streams: Set<OutputStream>? = nil, filePath: String = #file, functionName: String = #function, lineNumber: Int = #line) {
+    public func out(_ objects: Any..., level: LogLevel = .info, tags: Set<String> = Set(), with streams: Set<OutputStream>? = nil, filePath: String = #file, functionName: String = #function, lineNumber: Int = #line) {
         let caller = Caller(filePath: filePath, functionName: functionName, lineNumber: lineNumber)
-        guard let message = buildLogMessage(objects, level: level, caller: caller) else { return }
+        guard let message = buildLogMessage(objects, level: level, tags: tags, caller: caller) else { return }
         
         for stream in streams ?? outputStreams {
             switch stream {
@@ -49,13 +50,15 @@ extension Linna {
      
      - Parameters:
        - objects: Main contents for logging.
+       - level: The log level which describes severtiy.
+       - tags: Tags used to classify log.
        - filePath: The file path from which this method is called. Given by default.
        - functionName: The function name from which this method is called. Given by default.
        - lineNumber: The number of line from which this method is called. Given by default.
      */
-    public func cout(_ objects: Any..., level: LogLevel = .info, filePath: String = #file, functionName: String = #function, lineNumber: Int = #line) {
+    public func cout(_ objects: Any..., level: LogLevel = .info, tags: Set<String> = Set(), filePath: String = #file, functionName: String = #function, lineNumber: Int = #line) {
         let caller = Caller(filePath: filePath, functionName: functionName, lineNumber: lineNumber)
-        guard let message = buildLogMessage(objects, level: level, caller: caller) else { return }
+        guard let message = buildLogMessage(objects, level: level, tags: tags, caller: caller) else { return }
         
         consoleStream.out(message: message)
     }
@@ -65,15 +68,17 @@ extension Linna {
      
      - Parameters:
        - objects: Main contents for logging.
+       - level: The log level which describes severtiy.
+       - tags: Tags used to classify log.
        - filePath: The file path from which this method is called. Given by default.
        - functionName: The function name from which this method is called. Given by default.
        - lineNumber: The number of line from which this method is called. Given by default.
      */
-    public func fout(_ objects: Any..., level: LogLevel = .info, filePath: String = #file, functionName: String = #function, lineNumber: Int = #line) {
+    public func fout(_ objects: Any..., level: LogLevel = .info, tags: Set<String> = Set(), filePath: String = #file, functionName: String = #function, lineNumber: Int = #line) {
         #if DEBUG
         if let localFileStream = localFileStream {
             let caller = Caller(filePath: filePath, functionName: functionName, lineNumber: lineNumber)
-            guard let message = buildLogMessage(objects, level: level, caller: caller) else { return }
+            guard let message = buildLogMessage(objects, level: level, tags: tags, caller: caller) else { return }
             
             localFileStream.out(message: message)
         } else {
@@ -88,16 +93,17 @@ extension Linna {
      - Parameters:
        - objects: Main contents for logging.
        - level: The log level which describes severtiy.
+       - tags: Tags used to classify log.
        - caller: The position from which the output function is called.
      
      - Returns:
        - The combined log message.
      */
-    private func buildLogMessage(_ objects: [Any], level: LogLevel, caller: Caller) -> String? {
+    private func buildLogMessage(_ objects: [Any], level: LogLevel, tags: Set<String>, caller: Caller) -> String? {
         return logBuilder.build(
             objects: objects,
             level: level,
-            tags: [level.outputName()],
+            tags: tags,
             caller: caller
         )
     }

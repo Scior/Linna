@@ -25,11 +25,14 @@ README written in other languages:
 
 **Linna** is a simple customizable logger for iOS, fully compatible with Swift.  
 
+![Linna Sample](https://gist.githubusercontent.com/Scior/c601461a06a384e0f534b045d29b6272/raw/2b6c0ef488bf17fa38f9980ae2c77083ca795a6b/linnasample.gif)
+
 ### Feature
 
 - Simple interface.
 - Customizable formats.
 - Support file output.
+  - Files can be opened with terminal...
 
 ## Installation
 
@@ -68,13 +71,30 @@ The console output will be,
 
 ### Import once
 
-If you don't want to `import` in each file, hold instance in `AppDelegate.swift` or some global file .
+If you don't want to `import` in each file, hold an instance in `AppDelegate.swift` or some global file .
 
 ```swift
 let linna = Linna() // here
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
+```
+
+### Levels and Tags
+
+You can classify logs with levels and tags.  
+Levels are used to represent severity, and tags are user-defined word to classify the logs.
+
+```swift
+linna.out("No response", level: warning)
+linna.out("Red button is tapped", tags: ["ButtonEvent"])
+```
+
+Output will be,
+
+```text
+2018/12/01 03:25:03 [WARNING] [xxx.swift::someFunc():5] No response
+2018/12/01 03:25:03 [INFO] [xxx.swift::someFunc():6] Red button is tapped #ButtonEvent
 ```
 
 ### With a customized format
@@ -84,6 +104,7 @@ Heres are replaced attributes.
 - `%d`: Replaced with a date string.
 - `%obj`: Replaced with objects.
 - `%level`: Replaced with a log level. (e.g. INFO, ERROR)
+- `%tags`: Replaced witrh tags.
 - `%file`: Replaced with a file name.
 - `%func`: Replaced with a function name.
 - `%line`: Replaced with a line number.
@@ -91,20 +112,20 @@ Heres are replaced attributes.
 A format pattern must be set before calling output methods.
 
 ```swift
-linna.setFormatPattern(with: "%d %obj <%level> #%file:%func:%line#")
+linna.setFormatPattern(with: "%d %obj <%level> #%file:%func:%line# %tags")
 linna.out("Hello!")
 ```
 
 ### File output
 
-To output the log file,
+To output with file,
 
 ```swift
 linna.setFileOutputPath(to: "tmp/hogetaro")
 linna.out("Bye!")
 ```
 
-then, a new log file will be created if it doesn't exist, and the log message will be appended to the file.
+a new log file will be created if it doesn't exist, and the log message will be appended to the file.
 
 ### Separate the output explicitly
 
@@ -129,6 +150,25 @@ linna.outputStreams = [.console]
 // Console and file
 linna.outputStreams = [.console, .file]
 ```
+
+## Debugging with Terminal
+
+To check on terminal, use some commands and supporting scripts.
+
+For example,
+
+```swift
+linna.setFileOutputPath(to: "tmp/sample.log")
+linna.out("Bye!")
+```
+
+then, output will be placed at `/tmp/`, so,
+
+```sh
+tail -F /tmp/sample.log | perl utils/highlight.pl
+```
+
+will show the log like the sample on the top.
 
 ## Sample
 

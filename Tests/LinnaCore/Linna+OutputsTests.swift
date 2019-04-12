@@ -17,7 +17,7 @@ class LinnaOutputsTests: XCTestCase {
     private var linna = Linna()
     
     class LogBuilderMock: LogBuilder {
-        override func build(objects: [Any], level: Linna.LogLevel, tags: [String], caller: Caller) -> String {
+        override func build(objects: [Any], level: Linna.LogLevel, tags: Set<String>, caller: Caller) -> String {
             return LinnaOutputsTests.testMessage
         }
     }

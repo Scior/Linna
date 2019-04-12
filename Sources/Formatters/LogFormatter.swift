@@ -28,6 +28,7 @@ extension LogFormatter {
      - `%d`: Replaced with a date string.
      - `%obj`: Replaced with objects.
      - `%level`: Replaced with a log level.
+     - `%tags`: Replaced with tags.
      - `%file`: Replaced with a file name.
      - `%func`: Replaced with a function name.
      - `%line`: Replaced with a line number.
@@ -44,6 +45,7 @@ extension LogFormatter {
             .replaceSafely(of: "%d", with: contents.date)
             .replaceSafely(of: "%obj", with: contents.objects.map({ "\($0)" }).joined(separator: " "))
             .replaceSafely(of: "%level", with: contents.level.outputName())
+            .replaceSafely(of: "%tags", with: contents.tags.map({ "#\($0)" }).joined(separator: " "))
             .replaceSafely(of: "%file", with: contents.caller.filePath.getFileName())
             .replaceSafely(of: "%func", with: contents.caller.functionName)
             .replaceSafely(of: "%line", with: String(contents.caller.lineNumber))
