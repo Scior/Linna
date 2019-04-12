@@ -1,8 +1,8 @@
 # Linna
 
-[![version](https://img.shields.io/badge/version-0.1.0-blue.svg)](https://github.com/Scior/Linna)
+[![version](https://img.shields.io/badge/version-0.2.1-blue.svg)](https://github.com/Scior/Linna)
 [![Build Status](https://travis-ci.org/Scior/Linna.svg?branch=master)](https://travis-ci.org/Scior/Linna)
-[![Swift: 4.2](https://img.shields.io/badge/Swift-4.2-green.svg)](https://swift.org/)
+[![Swift: 5.0](https://img.shields.io/badge/Swift-5.0-green.svg)](https://swift.org/)
 [![Carthage](https://img.shields.io/badge/Carthage-compatible-green.svg)](https://github.com/Carthage/Carthage)
 [![Coverage Status](https://coveralls.io/repos/github/Scior/Linna/badge.svg)](https://coveralls.io/github/Scior/Linna)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -12,14 +12,24 @@
 ----
 
 - [What's this?](#whats-this)
+- [Feature](#feature)
 - [Installation](#installation)
 - [Usage](#usage)
+- [Debugging with Terminal](#debugging-with-terminal)
 - [Sample](#sample)
 - [License](#license)
 
 ## What's this?
 
 **Linna**は、Swift製のシンプルなインターフェースを持つデバッグロガーです。
+
+![Linna Sample](https://gist.githubusercontent.com/Scior/c601461a06a384e0f534b045d29b6272/raw/2b6c0ef488bf17fa38f9980ae2c77083ca795a6b/linnasample.gif)
+
+## Feature
+
+- カスタム可能なフォーマット
+- ファイル出力対応
+- タグによる分類
 
 ## Installation
 
@@ -35,20 +45,18 @@ github "Scior/Linna"
 
 - プロジェクトに`Linna.framework`を追加します。
 
-![Framework Installation](./docs/images/framework_installation.png)
-
 ## Usage
 
 ### クイックスタート
 
-**Linna**をインポートして、`static`メソッドを呼び出します。
+**Linna**をインポートして、`shared`インスタンスを使ってメソッドを呼び出します。
 
 ```swift
 import Linna
 
 func someFunc() {
     // Sample for the console output with the default format
-    Linna.out("Hello!")
+    Linna.shared.out("Hello!")
 }
 ```
 
@@ -58,36 +66,76 @@ func someFunc() {
 2018/12/01 03:25:03 [INFO] [xxx.swift::someFunc():5] Hello!
 ```
 
+### 複数箇所で使用したい場合
+
+何度もインポートしたくない場合は、`AppDelegate.swift`などのグローバルスコープでインスタンスを持ちます。
+
+```swift
+let linna = Linna()
+
+@UIApplicationMain
+class AppDelegate: UIResponder, UIApplicationDelegate {
+```
+
+### レベルとタグ
+
+ログは**レベル**と**タグ**で分類できます。
+
+**レベル**はそのログの重要度を表します(`INFO`, `WARNING`, `ERROR`など)。  
+**タグ**はユーザーが定義する分類用の文字列です。
+
+```swift
+linna.out("No response", level: warning)
+linna.out("Red button is tapped", tags: ["ButtonEvent"])
+```
+
+この場合出力は次のようになります。
+
+```text
+2018/12/01 03:25:03 [WARNING] [xxx.swift::someFunc():5] No response
+2018/12/01 03:25:03 [INFO] [xxx.swift::someFunc():6] Red button is tapped #ButtonEvent
+```
+
 ### フォーマットをカスタマイズする
 
 利用可能なパラメーターは以下のようになります。
 
-- `%d`: 日時
-- `%obj`: オブジェクト
-- `%level`: INFO, ERRORなどのログレベル
-- `%file`: ファイル名
-- `%func`: メソッド名
-- `%line`: 行番号
+| パラメーター | 内容 | 例 |
+| -- | -- | -- |
+| `%d` | 日時 | 2018/12/01 03:25:03 |
+| `%obj` | オブジェクト | Hello! |
+| `%level` | ログレベル | INFO, ERROR |
+| `%tags` | タグ | #ButtonEvent |
+| `%file` | ファイル名 | SampleViewController.swift |
+| `%func` | メソッド名 | viewDidLoad() |
+| `%line` | 行番号 | 87 |
 
 フォーマットパターンは、以下のメソッドでセットします。
 
 ```swift
-Linna.setFormatPattern(with: "%d %obj <%level> #%file:%func:%line#")
-Linna.out("Hello!")
+linna.setFormatPattern(with: "%d %obj <%level> at %file:%line")
+linna.out("Hello!")
 ```
 
-### File output
+出力はこのようになります。
 
-ファイル出力をする際は、パスを指定します。
+```text
+2018/12/01 03:25:03 Hello! <WARNING> at xxx.swift:5
+```
+
+### ファイル出力
+
+ファイル出力をする際は、パスを指定する必要があります。
 
 ```swift
 Linna.setFileOutputPath(to: "tmp/hogetaro")
 Linna.out("Bye!")
 ```
 
-ファイルがすでに存在する場合は、追記されます。
+ファイルがすでに存在する場合は、追記されます。  
+存在しない場合は作成されます。
 
-### Separate the output explicitly
+### 出力を明示的に分ける
 
 コンソール出力のみしたい場合は、
 
@@ -112,9 +160,27 @@ Linna.outputStreams = [.console]
 Linna.outputStreams = [.console, .file]
 ```
 
+## ターミナルでログを確認する
+
+ターミナルでログを確認する際は、通常のシェルコマンドと補助スクリプトを利用できます。
+
+```swift
+linna.setFileOutputPath(to: "tmp/sample.log")
+linna.out("Bye!")
+```
+
+この場合`/tmp/`にログが出力されるので、
+
+```sh
+tail -F /tmp/sample.log | perl utils/highlight.pl
+```
+
+このようにすると、一番上のGIF画像のようになります。
+
 ## Sample
 
-サンプルアプリはこちらにあります。 [LinnaSampleApp](https://github.com/Scior/Linna/tree/master/LinnaSampleApp).
+サンプルアプリはこちらにあります。  
+- [LinnaSampleApp](https://github.com/Scior/Linna/tree/master/LinnaSampleApp)
 
 ## License
 
