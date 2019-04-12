@@ -29,7 +29,7 @@ README written in other languages:
 
 ![Linna Sample](https://gist.githubusercontent.com/Scior/c601461a06a384e0f534b045d29b6272/raw/2b6c0ef488bf17fa38f9980ae2c77083ca795a6b/linnasample.gif)
 
-### Feature
+## Feature
 
 - Simple interface.
 - Customizable formats.
