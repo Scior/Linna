@@ -12,8 +12,10 @@
 ----
 
 - [What's this?](#whats-this)
+- [Feature](#feature)
 - [Installation](#installation)
 - [Usage](#usage)
+- [Debugging with Terminal](#debugging-with-terminal)
 - [Sample](#sample)
 - [License](#license)
 
@@ -32,7 +34,8 @@ README written in other languages:
 - Simple interface.
 - Customizable formats.
 - Support file output.
-  - Files can be opened with a terminal:)
+  - Files can be opened with a terminal:D
+- Classification with tags.
 
 ## Installation
 
@@ -52,7 +55,7 @@ github "Scior/Linna"
 
 ### The simplest way
 
-Import **Linna** and simply call the methods.
+Import **Linna** and simply call the methods with shared instance.
 
 ```swift
 import Linna
@@ -71,7 +74,7 @@ The console output will be,
 
 ### Import once
 
-If you don't want to `import` in each file, hold an instance in `AppDelegate.swift` or some global file .
+If you don't want to `import` in each file, hold an instance of `Linna` in `AppDelegate.swift` or some global file.
 
 ```swift
 let linna = Linna() // here
@@ -82,8 +85,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 ### Levels and Tags
 
-You can classify logs with levels and tags.  
-Levels are used to represent severity, and tags are user-defined word to classify the logs.
+You can classify logs with **levels** and **tags**.
+
+**Levels** represents severity (e.g. `INFO`, `WARNING`, `ERROR`), and **tags** are user-defined words to classify the logs.
 
 ```swift
 linna.out("No response", level: warning)
@@ -101,35 +105,44 @@ Output will be,
 
 Heres are replaced attributes.
 
-- `%d`: Replaced with a date string.
-- `%obj`: Replaced with objects.
-- `%level`: Replaced with a log level. (e.g. INFO, ERROR)
-- `%tags`: Replaced witrh tags.
-- `%file`: Replaced with a file name.
-- `%func`: Replaced with a function name.
-- `%line`: Replaced with a line number.
+| Attribute | Replaced with | Example |
+| -- | -- | -- |
+| `%d` | date string | 2018/12/01 03:25:03 |
+| `%obj` | objects | Hello! |
+| `%level` | log level | INFO, ERROR |
+| `%tags` | user-defined tags | #ButtonEvent |
+| `%file` | file name | SampleViewController.swift |
+| `%func` | function name | viewDidLoad() |
+| `%line` | line number | 87 |
 
-A format pattern must be set before calling output methods.
+For instance,
 
 ```swift
-linna.setFormatPattern(with: "%d %obj <%level> #%file:%func:%line# %tags")
+linna.setFormatPattern(with: "%d %obj <%level> at %file:%line")
 linna.out("Hello!")
+```
+
+the output will be,
+
+```text
+2018/12/01 03:25:03 Hello! <WARNING> at xxx.swift:5
 ```
 
 ### File output
 
-To output with file,
+To output to the local file, a file path **MUST** be set before calling output methods.
 
 ```swift
 linna.setFileOutputPath(to: "tmp/hogetaro")
 linna.out("Bye!")
 ```
 
-a new log file will be created if it doesn't exist, and the log message will be appended to the file.
+A new file will be created if it doesn't exist.
+If it exists, the log message will be appended to the existing file.
 
 ### Separate the output explicitly
 
-To output solely to the debug console,
+To output solely to the debug console, call explicitly
 
 ```swift
 Linna.cout("Console only")
@@ -142,18 +155,18 @@ linna.setFileOutputPath(to: "tmp/hogejiro")
 linna.fout("File only")
 ```
 
-Otherwise, you can define the default stream to output through `Linna` class.
+Otherwise, you can define the streams to output through `Linna` class.
 
 ```swift
 // Console only
 linna.outputStreams = [.console]
-// Console and file
+// Console and file(default)
 linna.outputStreams = [.console, .file]
 ```
 
 ## Debugging with Terminal
 
-To check on terminal, use some commands and supporting scripts.
+To check logs on the terminal, use some commands and supporting scripts.
 
 For example,
 
@@ -168,7 +181,7 @@ then, output will be placed at `/tmp/`, so,
 tail -F /tmp/sample.log | perl utils/highlight.pl
 ```
 
-will show the log like the sample on the top.
+will show the log like the sample going on the top.
 
 ## Sample
 
