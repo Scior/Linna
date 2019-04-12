@@ -12,7 +12,7 @@ import XCTest
 class LogBuilderTests: XCTestCase {
     
     private let testObjects = ["HogeMessage"]
-    private let testTags = ["HOGE"]
+    private let testTags: Set<String> = ["HOGE"]
     private let testFileName = "HogeFile"
     private let testFunction = "HogeFunction"
     private let testLine: Int = 1_212

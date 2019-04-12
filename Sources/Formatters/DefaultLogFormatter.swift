@@ -13,7 +13,7 @@ class DefaultLogFormatter: LogFormatter {
     
     // MARK: - Constants
     
-    private static let pattern = "%d [%level] [%file::%func:%line] %obj"
+    private static let pattern = "%d [%level] [%file::%func:%line] %obj %tags"
     
     // MARK: - Methods
     

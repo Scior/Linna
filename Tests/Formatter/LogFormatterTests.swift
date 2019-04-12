@@ -16,27 +16,45 @@ class LogFormatterTests: XCTestCase {
         date: "1234-11-22 xx:xx:xx",
         level: .info,
         objects: ["XAXA", "BBXX"],
+        tags: Set(),
         caller: Caller(filePath: "HogeFile", functionName: "HogeFunc", lineNumber: 3_333)
     )
     private let contents2 = LogContents(
         date: "2018-01-01 00:00:00",
         level: .error,
         objects: ["Fuga"],
+        tags: Set(),
         caller: Caller(filePath: "FugaFile", functionName: "FugaFunc", lineNumber: 12)
+    )
+    private let contents3 = LogContents(
+        date: "2018-12-31 00:00:00",
+        level: .info,
+        objects: ["HogeFuga"],
+        tags: ["ABC", "Jupiter"],
+        caller: Caller(filePath: "HogeFugaFile", functionName: "funcfunc", lineNumber: 1222)
     )
 
     func testFormatWithPattern1() {
         XCTAssertEqual(
             formatter.format(from: contents1, with: "%d %obj <%level> #%file:%func:%line#"),
-            "\(contents1.date) XAXA BBXX <\(contents1.level.outputName())> #\(contents1.caller.filePath):\(contents1.caller.functionName):\(contents1.caller.lineNumber)#")
-        
+            "\(contents1.date) XAXA BBXX <\(contents1.level.outputName())> #\(contents1.caller.filePath):\(contents1.caller.functionName):\(contents1.caller.lineNumber)#"
+        )
     }
     
     func testFormatWithPattern2() {
         XCTAssertEqual(
             formatter.format(from: contents2, with: "%d %obj [%level] #%file::%func:%line#"),
-            "\(contents2.date) Fuga [\(contents2.level.outputName())] #\(contents2.caller.filePath)::\(contents2.caller.functionName):\(contents2.caller.lineNumber)#")
-        
+            "\(contents2.date) Fuga [\(contents2.level.outputName())] #\(contents2.caller.filePath)::\(contents2.caller.functionName):\(contents2.caller.lineNumber)#"
+        )
+    }
+    
+    func testFormatWithPattern3() {
+        XCTAssertEqual(
+            formatter.format(from: contents3, with: "%d %obj [%level] %file::%func:%line %tags"),
+            "\(contents3.date) \(contents3.objects[0]) [\(contents3.level.outputName())] " +
+            "\(contents3.caller.filePath)::\(contents3.caller.functionName):\(contents3.caller.lineNumber) " +
+            contents3.tags.map({ "#\($0)" }).joined(separator: " ")
+        )
     }
 
 }
