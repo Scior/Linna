@@ -56,5 +56,14 @@ class LogFormatterTests: XCTestCase {
             contents3.tags.map({ "#\($0)" }).joined(separator: " ")
         )
     }
+    
+    private let customFormatter = DefaultLogFormatter(pattern: .custom("%d %obj <%level> #%file:%func:%line# %tags"))
+    
+    func testCustomFormat() {
+        XCTAssertEqual(
+            customFormatter.format(from: contents1),
+            "\(contents1.date) XAXA BBXX <\(contents1.level.outputName())> #\(contents1.caller.filePath):\(contents1.caller.functionName):\(contents1.caller.lineNumber)# "
+        )
+    }
 
 }

@@ -14,10 +14,24 @@ public class DefaultLogFormatter: LogFormatter {
     // MARK: - Constants
     
     /// Represents log format patterns.
-    public enum Pattern: String {
-        case detailed = "%d [%level] [%file::%func:%line] %obj %tags"
-        case normal = "%d [%level] %obj %tags"
-        case short = "%d %obj %tags"
+    public enum Pattern {
+        case detailed
+        case normal
+        case short
+        case custom(String)
+        
+        var prereplaced: String {
+            switch self {
+            case .detailed:
+                return "%d [%level] [%file::%func:%line] %obj %tags"
+            case .normal:
+                return "%d [%level] %obj %tags"
+            case .short:
+                return "%d %obj %tags"
+            case .custom(let value):
+                return value
+            }
+        }
     }
     
     // MARK: - Properties
@@ -39,6 +53,6 @@ public class DefaultLogFormatter: LogFormatter {
     
     // (Inherit doc.)
     func format(from contents: LogContents) -> String? {
-        return format(from: contents, with: pattern.rawValue)
+        return format(from: contents, with: pattern.prereplaced)
     }
 }

@@ -61,6 +61,6 @@ public class LogBuilder {
        - pattern: The format pattern to set.
     */
     func setFormatPattern(with pattern: String) {
-        logFormatter = CustomizableLogFormatter(pattern: pattern)
+        logFormatter = DefaultLogFormatter(pattern: .custom(pattern))
     }
 }
