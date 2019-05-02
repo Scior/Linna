@@ -15,7 +15,7 @@ public class LogBuilder {
     
     /// The static instance of the default log builder.
     public static let `default` = LogBuilder(
-        logFormatter: DefaultLogFormatter(),
+        logFormatter: DefaultLogFormatter(pattern: .normal),
         dateFormatter: DefaultDateFormatter().formatter
     )
     

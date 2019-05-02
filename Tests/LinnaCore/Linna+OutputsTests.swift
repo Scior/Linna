@@ -39,7 +39,7 @@ class LinnaOutputsTests: XCTestCase {
         super.setUp()
         
         linna = Linna(logBuilder: LogBuilderMock(
-            logFormatter: DefaultLogFormatter(),
+            logFormatter: DefaultLogFormatter(pattern: .detailed),
             dateFormatter: DefaultDateFormatter().formatter
         ))
         linna.consoleStream = ConsoleStreamMock()

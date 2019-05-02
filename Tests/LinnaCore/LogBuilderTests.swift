@@ -18,7 +18,7 @@ class LogBuilderTests: XCTestCase {
     private let testLine: Int = 1_212
     
     private let logBuilder = LogBuilder(
-        logFormatter: DefaultLogFormatter(),
+        logFormatter: DefaultLogFormatter(pattern: .detailed),
         dateFormatter: DefaultDateFormatter().formatter
     )
 

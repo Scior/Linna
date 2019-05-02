@@ -11,7 +11,7 @@ import XCTest
 
 class LogFormatterTests: XCTestCase {
     
-    private let formatter = DefaultLogFormatter()
+    private let formatter = DefaultLogFormatter(pattern: .detailed)
     private let contents1 = LogContents(
         date: "1234-11-22 xx:xx:xx",
         level: .info,
