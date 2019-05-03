@@ -15,7 +15,7 @@ public class LogBuilder {
     
     /// The static instance of the default log builder.
     public static let `default` = LogBuilder(
-        logFormatter: DefaultLogFormatter(),
+        logFormatter: DefaultLogFormatter(pattern: .normal),
         dateFormatter: DefaultDateFormatter().formatter
     )
     
@@ -61,6 +61,6 @@ public class LogBuilder {
        - pattern: The format pattern to set.
     */
     func setFormatPattern(with pattern: String) {
-        logFormatter = CustomizableLogFormatter(pattern: pattern)
+        logFormatter = DefaultLogFormatter(pattern: .custom(pattern))
     }
 }

@@ -9,16 +9,50 @@
 /**
  The default log formatter for Linna.
  */
-class DefaultLogFormatter: LogFormatter {
+public class DefaultLogFormatter: LogFormatter {
     
     // MARK: - Constants
     
-    private static let pattern = "%d [%level] [%file::%func:%line] %obj %tags"
+    /// Represents log format patterns.
+    public enum Pattern {
+        case detailed
+        case normal
+        case short
+        case custom(String)
+        
+        var prereplaced: String {
+            switch self {
+            case .detailed:
+                return "%d [%level] [%file::%func:%line] %obj %tags"
+            case .normal:
+                return "%d [%level] %obj %tags"
+            case .short:
+                return "%d %obj %tags"
+            case .custom(let value):
+                return value
+            }
+        }
+    }
+    
+    // MARK: - Properties
+    
+    /// Selected log format pattern.
+    let pattern: Pattern
     
     // MARK: - Methods
     
+    /**
+     Initializer.
+     
+     - Parameters:
+       - pattern: A log format pattern to select.
+     */
+    public init(pattern: Pattern) {
+        self.pattern = pattern
+    }
+    
     // (Inherit doc.)
     func format(from contents: LogContents) -> String? {
-        return format(from: contents, with: DefaultLogFormatter.pattern)
+        return format(from: contents, with: pattern.prereplaced)
     }
 }
