@@ -11,7 +11,7 @@ import XCTest
 
 class LogFormatterTests: XCTestCase {
     
-    private let formatter = DefaultLogFormatter(pattern: .detailed)
+    private let detailedFormatter = DefaultLogFormatter(pattern: .detailed)
     private let contents1 = LogContents(
         date: "1234-11-22 xx:xx:xx",
         level: .info,
@@ -36,25 +36,35 @@ class LogFormatterTests: XCTestCase {
 
     func testFormatWithPattern1() {
         XCTAssertEqual(
-            formatter.format(from: contents1, with: "%d %obj <%level> #%file:%func:%line#"),
+            detailedFormatter.format(from: contents1, with: "%d %obj <%level> #%file:%func:%line#"),
             "\(contents1.date) XAXA BBXX <\(contents1.level.outputName())> #\(contents1.caller.filePath):\(contents1.caller.functionName):\(contents1.caller.lineNumber)#"
         )
     }
     
     func testFormatWithPattern2() {
         XCTAssertEqual(
-            formatter.format(from: contents2, with: "%d %obj [%level] #%file::%func:%line#"),
+            detailedFormatter.format(from: contents2, with: "%d %obj [%level] #%file::%func:%line#"),
             "\(contents2.date) Fuga [\(contents2.level.outputName())] #\(contents2.caller.filePath)::\(contents2.caller.functionName):\(contents2.caller.lineNumber)#"
         )
     }
     
     func testFormatWithPattern3() {
         XCTAssertEqual(
-            formatter.format(from: contents3, with: "%d %obj [%level] %file::%func:%line %tags"),
-            "\(contents3.date) \(contents3.objects[0]) [\(contents3.level.outputName())] " +
-            "\(contents3.caller.filePath)::\(contents3.caller.functionName):\(contents3.caller.lineNumber) " +
+            detailedFormatter.format(from: contents3),
+            "\(contents3.date) [\(contents3.level.outputName())] " +
+            "[\(contents3.caller.filePath)::\(contents3.caller.functionName):\(contents3.caller.lineNumber)] \(contents3.objects[0]) " +
             contents3.tags.map({ "#\($0)" }).joined(separator: " ")
         )
+    }
+    
+    private let normalFormatter = DefaultLogFormatter(pattern: .normal)
+    
+    func testNormalFormatt() {
+        XCTAssertEqual(
+            normalFormatter.format(from: contents1),
+            "\(contents1.date) [\(contents1.level.outputName())] " +
+                contents1.objects.map({ "\($0)" }).joined(separator: " ") + " " +
+                contents1.tags.map({ "#\($0)" }).joined(separator: " "))
     }
     
     private let customFormatter = DefaultLogFormatter(pattern: .custom("%d %obj <%level> #%file:%func:%line# %tags"))
