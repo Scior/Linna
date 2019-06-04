@@ -33,6 +33,8 @@ class LogFormatterTests: XCTestCase {
         tags: ["ABC", "Jupiter"],
         caller: Caller(filePath: "HogeFugaFile", functionName: "funcfunc", lineNumber: 1222)
     )
+    
+    // MARK: - Test cases
 
     func testFormatWithPattern1() {
         XCTAssertEqual(

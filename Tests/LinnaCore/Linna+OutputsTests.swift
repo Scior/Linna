@@ -34,9 +34,13 @@ class LinnaOutputsTests: XCTestCase {
         guard let stream = LocalFileStream(filePath: testFilePath) else { fatalError() }
         return stream
     }()
+    
+    // MARK: - Overrides
 
     override func setUp() {
         super.setUp()
+        
+        removeTestLogFile()
         
         linna = Linna(logBuilder: LogBuilderMock(
             logFormatter: DefaultLogFormatter(pattern: .detailed),
@@ -45,8 +49,9 @@ class LinnaOutputsTests: XCTestCase {
         linna.consoleStream = ConsoleStreamMock()
     }
     
+    // MARK: - Test cases
+    
     func testOut() {
-        removeTestLogFile()
         linna.localFileStream = localFileStreamMock
         
         linna.out("aaa")
@@ -63,6 +68,14 @@ class LinnaOutputsTests: XCTestCase {
             String(data: data, encoding: .utf8)
         )
     }
+    
+    func testTee() {
+        let input = "hogeInput"
+        let actual = linna.tee(input)
+        
+        XCTAssertEqual(LinnaOutputsTests.testMessage, (linna.consoleStream as? ConsoleStreamMock)?.outputResult)
+        XCTAssertEqual(actual, input)
+    }
 
     func testCout() {
         linna.cout("aaa")
@@ -71,7 +84,6 @@ class LinnaOutputsTests: XCTestCase {
     }
     
     func testFout() {
-        removeTestLogFile()
         linna.localFileStream = localFileStreamMock
         linna.fout("uuu")
         linna.fout("uuu")
@@ -87,12 +99,13 @@ class LinnaOutputsTests: XCTestCase {
     }
     
     func testFoutWithNilFileStream() {
-        removeTestLogFile()
         linna.localFileStream = nil
         linna.fout("uuu")
         
         XCTAssertFalse(FileManager.default.fileExists(atPath: testFilePath))
     }
+    
+    // MARK: - Utilities
     
     private func removeTestLogFile() {
         let _ = try? FileManager.default.removeItem(atPath: testFilePath)

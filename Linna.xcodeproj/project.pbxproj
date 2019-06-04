@@ -129,7 +129,6 @@
 		6B3743502199AAE2001493A1 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				6B865D1E21B1836400C43AAF /* Enums */,
 				6B374384219C2592001493A1 /* Formatter */,
 				6B6CB24121BD383A00F86A0E /* LinnaCore */,
 				6B6CB23521BC03D400F86A0E /* Streams */,
@@ -215,13 +214,6 @@
 			sourceTree = "<group>";
 		};
 		6B865D1B21B1831700C43AAF /* Enums */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Enums;
-			sourceTree = "<group>";
-		};
-		6B865D1E21B1836400C43AAF /* Enums */ = {
 			isa = PBXGroup;
 			children = (
 			);

@@ -20,7 +20,7 @@ extension Linna {
     }
     
     /**
-     Outputs a log message to the console.
+     Outputs a log message to the stream.
      
      - Parameters:
        - objects: Main contents for logging.
@@ -43,6 +43,26 @@ extension Linna {
                 localFileStream?.out(message: message)
             }
         }
+    }
+    
+    /**
+     Outputs a log message to the stream and return input value.
+     
+     - Parameters:
+       - object: Main contents for logging.
+       - level: The log level which describes severtiy.
+       - tags: Tags used to classify log.
+       - streams: The set of output streams.
+       - filePath: The file path from which this method is called. Given by default.
+       - functionName: The function name from which this method is called. Given by default.
+       - lineNumber: The number of line from which this method is called. Given by default.
+     
+     - Returns: Input value.
+     */
+    public func tee<T>(_ object: T, level: LogLevel = .info, tags: Set<String> = Set(), with streams: Set<OutputStream>? = nil, filePath: String = #file, functionName: String = #function, lineNumber: Int = #line) -> T {
+        out(object, level: level, tags: tags, with: streams, filePath: filePath, functionName: functionName, lineNumber: lineNumber)
+        
+        return object
     }
     
     /**

@@ -10,6 +10,8 @@
 import XCTest
 
 class LogLevelTests: XCTestCase {
+    
+    // MARK: - Test cases
 
     func testLinnaLogLevels_outputName() {
         XCTAssertEqual(Linna.LogLevel.info.outputName(), "INFO")

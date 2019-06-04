@@ -21,6 +21,8 @@ class LogBuilderTests: XCTestCase {
         logFormatter: DefaultLogFormatter(pattern: .detailed),
         dateFormatter: DefaultDateFormatter().formatter
     )
+    
+    // MARK: - Test cases
 
     func testBuild() {
         guard let actual = logBuilder.build(

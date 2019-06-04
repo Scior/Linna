@@ -16,6 +16,8 @@ class LinnaTests: XCTestCase {
     
     private let linna = Linna()
     
+    // MARK: - Test cases
+    
     func testSetPattern() {
         linna.setFormatPattern(with: testPattern)
         XCTAssertEqual(testPattern, (linna.logBuilder.logFormatter as? DefaultLogFormatter)?.pattern.prereplaced)
