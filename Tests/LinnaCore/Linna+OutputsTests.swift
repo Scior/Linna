@@ -34,6 +34,8 @@ class LinnaOutputsTests: XCTestCase {
         guard let stream = LocalFileStream(filePath: testFilePath) else { fatalError() }
         return stream
     }()
+    
+    // MARK: - Overrides
 
     override func setUp() {
         super.setUp()
@@ -46,6 +48,8 @@ class LinnaOutputsTests: XCTestCase {
         ))
         linna.consoleStream = ConsoleStreamMock()
     }
+    
+    // MARK: - Test cases
     
     func testOut() {
         linna.localFileStream = localFileStreamMock
@@ -100,6 +104,8 @@ class LinnaOutputsTests: XCTestCase {
         
         XCTAssertFalse(FileManager.default.fileExists(atPath: testFilePath))
     }
+    
+    // MARK: - Utilities
     
     private func removeTestLogFile() {
         let _ = try? FileManager.default.removeItem(atPath: testFilePath)

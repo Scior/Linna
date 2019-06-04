@@ -12,6 +12,8 @@ import XCTest
 class FormatPatternValidatorTests: XCTestCase {
     
     private let validator = FormatPatternValidator()
+    
+    // MARK: - Test cases
 
     func testValidateShouldSuccess() {
         let pattern = "%d %obj <%level> #%file:%func:%line#"
